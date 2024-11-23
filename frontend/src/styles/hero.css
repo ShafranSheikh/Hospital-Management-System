@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Playfair',sans-serif;
+}
+.hero-section{
+    height: 46rem;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section  h1{
+    font-size: 100px;
+    color:#091057 ;
+}
+.hero-section img{
+    height: 25rem;
+}
+
+.hero-button-container {
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    margin-top: 20px; 
+}
+
+.hero-button-container button {
+    width: 14rem;
+    height: 3rem;
+    border: none; 
+    font-size: 25px;
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    cursor: pointer; 
+    transition: 0.4s ease; 
+}
+
+.hero-button-container button:nth-child(1) {
+    background-color: #0056b3; /* Darker blue */
+    color: white; 
+}
+
+.hero-button-container button:nth-child(1):hover {
+    background-color: #003f7f;
+}
+
+/* Style for the second button (light color) */
+.hero-button-container button:nth-child(2) {
+    background-color: #B7E0FF;
+}
+
+.hero-button-container button:nth-child(2):hover {
+    background-color: #0056b3;
+    color: #B7E0FF;
+}
+

@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Playfair',sans-serif;
+}
+.navbar-container-main{
+    height: 9rem;
+    width: 100%;
+    background-color: #DFF2EB;
+    display: flex;
+    flex-direction: column;
+}
+.navbar-container-contents{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-container-contents .navbar-contacts{
+    width: 35rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+}
+.navbar-container-contents .navbar-contacts h2 img{
+    height: 1.2rem;
+}
+.navbar-container-contents .navbar-contacts h2{
+    color: #608BC1;
+    font-size: 25px;
+}
+.navbar-container-contents img{
+    height: 3rem;
+}
+.navbar-container-contents .navbar-social-licks{
+    height: 4rem;
+    width: 15rem;
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    align-items: center;
+    padding: 10px;
+}
+.navbar-container-contents .navbar-social-licks img{
+    height: 2rem;
+}
+.navbar-container-links{
+    height: 4rem;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #608BC1;
+}
+
+.navbar-container-links ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    gap: 20px; 
+}
+
+.navbar-container-links li {
+    font-size: 25px; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+}
+
+.navbar-container-links a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Text color */
+    padding: 8px 15px; /* Add spacing around links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+.navbar-container-links a:hover {
+    color: #0B192C; /* Keep text white */
+}
+
+.navbar-container-links a:active {
+    background-color: #091057; /* Even darker for active state */
+}

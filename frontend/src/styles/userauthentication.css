@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Playfair',sans-serif;
+}
+/* Shared styling for the forms */
+.login-container, .signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50rem;
+}
+.login-form, .signup-form {
+    background-color: #e9ecef;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-form h2, .signup-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border-radius: 5px;
+}
+
+.login-form button, .signup-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00a6fb;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover, .signup-form button:hover {
+    background-color: #003554;
+}
+
+  /* Links for form navigation */
+.form-links {
+    margin-top: 20px;
+}
+
+.form-links p {
+    color: #333;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.form-links a {
+    color: #0582ca;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 18px;
+}
+
+.form-links a:hover {
+    color: #00a6fb;
+}

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Playfair',sans-serif;
+}
+.dashboeard-header{
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.dashboeard-header h1{
+    font-size: 50px;
+    font-style: italic;
+    color: #091057;
+}
+.dashboeard-header button{
+    background: none;
+    color: #091057;
+    font-size: 20px;
+    cursor: pointer;
+}
+.dashboard-functions{
+    height: 6rem;
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+}
+.dashboard-functions .month-selector{
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    border: 2px solid #091057;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    box-shadow: 2px 2px 20px #aaaaaa;
+}
+.dashboard-functions button{
+    width: 18rem;
+    background-color: #C4D7FF;
+    color: #024CAA;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 1px solid #091057;
+    
+}
+.dashboard-statistics{
+    height: 15rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.dashboard-statistics .stat-card{
+    height: 12rem;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.dashboard-statistics .stat-card h1{
+    font-size: 100px;
+}
+.dashboard-statistics .stat-card h3{
+    font-size: 25px;
+}
+.dashboard-statistics .stat-card:nth-child(1),
+.dashboard-statistics .stat-card:nth-child(2),
+.dashboard-statistics .stat-card:nth-child(3){
+    box-shadow: 3px 3px 20px #024CAA;
+}
+.dashboard-statistics .stat-card:nth-child(4){
+    box-shadow: 3px 3px 20px #FF2929;
+}
