@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Hero from './pages/Hero'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/login'
-import Signin from './pages/Signin'
+import Signin from './pages/Signin';
+import ProtectedRoute from './components/protectedRoute'
 function App() {
   return (
     <>
@@ -13,7 +14,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Hero />} />
-        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/dashboard' element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }/>
         <Route path='/login' element={<Login />} />
         <Route path='/signin' element={<Signin />}/>
       </Routes>

@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import User from '../models/userSchema.js';
+import User from '../models/UserSchema.js';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import Blacklist from '../models/blacklistSchema.js';

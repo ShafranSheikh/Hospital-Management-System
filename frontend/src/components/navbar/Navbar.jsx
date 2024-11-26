@@ -1,6 +1,7 @@
 import React from 'react'
 import './navbar.css';
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import phone from '../../assets/telephone.png'
 import mail from '../../assets/mail.png';
 import logo from '../../assets/hospital-logo.png'
@@ -8,6 +9,15 @@ import facebook from '../../assets/facebook.png';
 import github from '../../assets/github.png';
 import linkedin from '../../assets/linkedin.png';
 const Navbar = () => {
+    const navigate = useNavigate();
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+    const handleDashboardClick = (e) => {
+        if (!isAuthenticated) {
+          e.preventDefault(); // Prevent default link behavior
+          navigate('/login'); // Redirect to login
+        }
+      };
   return (
     <div className="navbar-container-main">
         <div className="navbar-container-contents">
@@ -43,7 +53,7 @@ const Navbar = () => {
                     <Link to='/Contact'>Contact</Link>
                 </li>
                 <li>
-                    <Link to='/dashboard'>Dashboard</Link>
+                    <Link to='/dashboard'onClick={handleDashboardClick}>Dashboard</Link>
                 </li>
             </ul>
         </div>

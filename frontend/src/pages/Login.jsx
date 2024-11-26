@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import { Link ,useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import '../styles/userauthentication.css'
+import '../styles/userauthentication.css';
+import { loginSuccess } from '../redux/features/authSlice.js';
 const Login = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');    
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -15,9 +18,12 @@ const Login = () => {
                 password,
             });
             if(response.status === 200){
-                localStorage.setItem('token', response.data.token); // Store token in localStorage
+                dispatch(
+                    loginSuccess({
+                        token: response.data.token 
+                    })
+                );
                 navigate('/dashboard');
-                // window.location.reload();
             }else{
                 setError("Username or password incorrect, please try again");
             }

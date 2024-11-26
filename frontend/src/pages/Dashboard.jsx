@@ -1,9 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import {logout} from '../redux/features/authSlice.js'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/dashboard.css';
 const Dashboard = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const handleLogout = async () =>{
         try{
             //get the token from local storage
@@ -14,10 +18,7 @@ const Dashboard = () => {
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            //clear the token from local storage
-            localStorage.removeItem('token');
-            //redirect to home
-            navigate('/');
+            dispatch(logout());
         }catch(error){
             console.error('Logout failed:', error);
             alert('Logout failed');
