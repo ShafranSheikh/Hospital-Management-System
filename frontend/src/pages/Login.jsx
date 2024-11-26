@@ -1,12 +1,34 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
+import axios from 'axios';
 import '../styles/userauthentication.css'
-const login = () => {
+const Login = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');    
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        try{
+            const response = await axios.post("http://localhost:3000/api/auth/login",{
+                email,
+                password,
+            });
+            if(response.status === 200){
+                localStorage.setItem('token', response.data.token); // Store token in localStorage
+                navigate('/dashboard');
+                // window.location.reload();
+            }else{
+                setError("Username or password incorrect, please try again");
+            }
+        }catch(error){
+            setError("An error occurred. Please try again later.");
+            console.error(error);
+        }
+    }
     return (
     <div className="login-container" >
-            <form className="login-form" >
+            <form className="login-form"  onSubmit={handleFormSubmit}>
                 <h2>Login</h2>
                     <div className="form-group">
                     <label htmlFor="username">Email</label>
@@ -20,6 +42,7 @@ const login = () => {
                         placeholder="Enter your password"value={password} onChange={(e)=>setPassword(e.target.value)}
                     />
                 </div>
+                {error && <p className="error">{error}</p>}
                 <button type="submit">Login</button>    
                 <div className="form-links">
                     <p>
@@ -29,10 +52,11 @@ const login = () => {
                     <a href="/google-signin" className="google-signin">
                         Sign in with Google
                     </a>
+                    
                 </div>
             </form>
         </div>
   )
 }
 
-export default login
+export default Login
