@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Playfair',sans-serif;
+}
+.patient-header{
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.patient-header h1{
+    font-size: 50px;
+    font-style: italic;
+    color: #091057;
+}
+.patient-header button{
+    background: none;
+    color: #091057;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'Work Sans';
+}
+
+/* PatientForm.css */
+.patient-form {
+    width: 60rem; /* Increased form width */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* Default direction for most groups */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: none;
+    max-lines: 4;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+.form-group.radio-group {
+    flex-direction: row; /* Align items horizontally */
+    align-items: center; /* Center the labels with radio buttons */
+    gap: 10px; /* Add spacing between options */
+}
+
+.form-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+

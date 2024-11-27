@@ -78,8 +78,18 @@
 .dashboard-statistics .stat-card:nth-child(1),
 .dashboard-statistics .stat-card:nth-child(2),
 .dashboard-statistics .stat-card:nth-child(3){
-    box-shadow: 3px 3px 20px #024CAA;
+    box-shadow: 3px 3px 20px #B3C8CF;
+    transition: 0.4s ease;
+}
+.dashboard-statistics .stat-card:nth-child(2):hover,
+.dashboard-statistics .stat-card:nth-child(1):hover,
+.dashboard-statistics .stat-card:nth-child(3):hover{
+    box-shadow: 3px 3px 20px #89A8B2;
 }
 .dashboard-statistics .stat-card:nth-child(4){
-    box-shadow: 3px 3px 20px #FF2929;
+    box-shadow: 3px 3px 20px #eda29d;
+    transition: 0.4s ease;
+}
+.dashboard-statistics .stat-card:nth-child(4):hover{
+    box-shadow: 3px 3px 20px #f7786f;
 }
