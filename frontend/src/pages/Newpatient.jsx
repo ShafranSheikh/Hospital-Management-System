@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/newpatient.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Newpatient = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -10,7 +11,6 @@ const Newpatient = () => {
         address: "",
         email: "",
         purpose: "",
-        registrationDate: "",
         phone: "",
       });
     
@@ -19,10 +19,14 @@ const Newpatient = () => {
         setFormData({ ...formData, [name]: value });
       };
     
-      const handleSubmit = (e) => {
+      const handleSubmit =async (e) => {
         e.preventDefault();
-        console.log("Form Submitted:", formData);
-        alert("Form Submitted Successfully!");
+        try{
+            const response = await axios.post('http://localhost:3000/api/new/register/patient', formData);
+            
+        }catch(error){
+            console.error('Error during submission',error);
+        }
       };
   return (
     <>
@@ -121,17 +125,6 @@ const Newpatient = () => {
                 <label htmlFor="daily-checkup">Daily Checkup</label>
             </div>
             <div className="form-group">
-                <label htmlFor="registrationDate">Registration Date:</label>
-                <input
-                type="date"
-                id="registrationDate"
-                name="registrationDate"
-                value={formData.registrationDate}
-                onChange={handleChange}
-                required
-                />
-            </div>
-            <div className="form-group">
                 <label htmlFor="phone">Phone Number:</label>
                 <input
                 type="tel"
@@ -150,4 +143,4 @@ const Newpatient = () => {
   )
 }
 
-export default Newpatient
+export default Newpatient;
