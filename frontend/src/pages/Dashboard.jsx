@@ -37,8 +37,7 @@ const Dashboard = () => {
                     <input type="month" />
                 </form>
             </div>
-            <button onClick={()=>navigate('/patient')}>Go To Patients</button>
-            <button>Add New Doctor</button>
+            <button onClick={()=>navigate('/tables')}>View Tables</button>
         </div>
         <div className="dashboard-statistics">
             <div className="stat-card">

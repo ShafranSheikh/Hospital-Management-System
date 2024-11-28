@@ -22,7 +22,7 @@ const Newpatient = () => {
       const handleSubmit =async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.post('http://localhost:3000/api/new/register/patient', formData);
+            const response = await axios.post('http://localhost:3000/api/patient/register/new', formData);
             
         }catch(error){
             console.error('Error during submission',error);
@@ -32,7 +32,7 @@ const Newpatient = () => {
     <>
         <div className="patient-header">
                 <h1>Patients</h1>
-                <button onClick={()=> navigate('/patient')}>Back to Patients</button>
+                <button onClick={()=> navigate('/tables')}>Back to Tables</button>
         </div>
         <form className="patient-form" onSubmit={handleSubmit}>
             <div className="form-group">

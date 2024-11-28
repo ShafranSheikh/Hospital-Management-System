@@ -8,7 +8,6 @@
     border:none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Playfair',sans-serif;
 }
 .patient-header{
     height: 6rem;
@@ -33,8 +32,8 @@
     height: 7rem;
     background-color: #091057;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
 }
 .patien-ribbon button{
     height: 4rem;

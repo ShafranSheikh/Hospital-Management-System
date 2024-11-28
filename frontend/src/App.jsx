@@ -7,8 +7,9 @@ import Dashboard from './pages/Dashboard'
 import Login from './pages/login'
 import Signin from './pages/Signin';
 import ProtectedRoute from './components/protectedRoute'
-import Patient from './pages/Patient'
+import Tables from './pages/Tables'
 import Newpatient from './pages/Newpatient'
+import NewDoctor from './pages/NewDoctor'
 function App() {
   return (
     <>
@@ -21,14 +22,19 @@ function App() {
             <Dashboard />
           </ProtectedRoute>
         }/>
-        <Route path='/patient' element={
+        <Route path='/tables' element={
           <ProtectedRoute>
-            <Patient />
+            <Tables />
           </ProtectedRoute>
         }/>
-        <Route path='/patient/newpatient' element={
+        <Route path='/tables/newpatient' element={
           <ProtectedRoute>
             <Newpatient/>
+          </ProtectedRoute>
+        }/>
+        <Route path='/tables/newdoctor' element={
+          <ProtectedRoute>
+            <NewDoctor />
           </ProtectedRoute>
         }/>
         <Route path='/login' element={<Login />} />

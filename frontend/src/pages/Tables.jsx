@@ -5,7 +5,7 @@ import {logout} from '../redux/features/authSlice.js'
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import axios from 'axios';
-const Patient = () => {
+const Tables = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     // State to track the active tab
@@ -57,11 +57,12 @@ const Patient = () => {
     return (
         <>
             <div className="patient-header">
-                <h1>Patients</h1>
+                <h1>Tables</h1>
                 <button onClick={handleLogout}>Logout</button>
             </div>
             <div className="patien-ribbon">
-                <button onClick={()=> navigate('/patient/newpatient')}>Add New Patient <AddIcon fontSize='medium'/></button>
+                <button onClick={()=> navigate('/tables/newpatient')}>Add New Patient <AddIcon fontSize='medium'/></button>
+                <button onClick={()=> navigate('/tables/newdoctor')}>Add New Doctor <AddIcon fontSize='medium'/></button>
             </div>
             <div>
       {/* Tabs */}
@@ -146,4 +147,4 @@ const Patient = () => {
     )
 }
 
-export default Patient
+export default Tables;
