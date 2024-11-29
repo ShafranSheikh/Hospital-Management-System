@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     margin:0;
     padding:0;
@@ -25,7 +24,7 @@
     color: #091057;
     font-size: 20px;
     cursor: pointer;
-    font-family: 'Work Sans';
+    font-family: 'Jost';
 }
 
 .patien-ribbon{
@@ -52,61 +51,32 @@
     font-size: 22px;
 }
 
-.tabs {
-    display: flex;
-    height: 5rem;
-    width: 100%;
-    background-color: aliceblue;
-    margin: 20px 10px;
-    justify-content: left;
-    align-items: center;
-    gap: 40px;
-}
-.tab {
-    padding: 10px 20px;
-    width: 20rem;
-    height: 4rem;
-    cursor: pointer;
-    font-size: 20px;
-    background-color: lightgray;
-    border: none;
-    border-radius: 4px;
-    transition: 0.5s ease-out;
-}
-.tab.active {
-    background-color: gray;
-    color: white;
-}
-.table-container {
-    margin: 20px;
-    max-height: 40rem; 
-    overflow-y: auto;  /* Enable vertical scrolling */
-    border: 1px solid #ccc;
-}
-.table-container  table {
+table {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     border-collapse: separate; /* Required for border-radius to work */
     border-spacing: 8px; /* Adds space between cells */
 }
-.table-container  table thead{
+table thead{
     height: 5rem;
     background-color: #89A8B2;
     text-align: center;
     font-size: 30px;
 }
-.table-container  table thead th{
+ table thead th{
     border-radius: 7px;
     border: 1px solid #091057;
+    font-family: 'Jost';
 }
-.table-container  table tbody tr{
+table tbody tr{
     height: 5rem;
     font-size: 25px;
     padding: 10px;
     margin: 10px;
+    font-family: 'Jost';
 }
-.table-container  table td{
+table td{
     padding: 10px;
     background-color: aliceblue;
     border-radius: 7px;

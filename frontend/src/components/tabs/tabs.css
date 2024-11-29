@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border:none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+.tab-headers {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    height: 3rem;
+    margin-top: 1rem;
+  }
+  
+  .tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 22px;
+    font-family: 'Jost';
+  }
+  
+  .tab-button.active {
+    border-color: #007bff;
+    color: #007bff;
+  }
+  
+  .tab-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .tab-content {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-top: -1px;
+  }
+  

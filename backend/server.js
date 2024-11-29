@@ -53,7 +53,7 @@ passport.use(
 
 // Routes
 app.use('/api/auth', UserRouter);
-app.use('/api/new', patientRouter)
+app.use('/api/patient', patientRouter)
 
 // Start the server
 app.listen(3000, () => {
