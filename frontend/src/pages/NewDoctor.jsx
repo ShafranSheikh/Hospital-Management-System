@@ -1,7 +1,9 @@
 import React from 'react'
 import '../styles/newdoctor.css';
+import { useNavigate } from 'react-router-dom';
 import placeholder from '../assets/photo.png'
 const NewDoctor = () => {
+  const navigate = useNavigate();
     const handleFileChange = (event) => {
       const file = event.target.files[0];
       if (file) {
@@ -12,8 +14,14 @@ const NewDoctor = () => {
 
   return (
     <>
+    <div className="patient-header">
+                <h1>Doctors</h1>
+                <button onClick={()=> navigate('/tables')}>Back to Tables</button>
+        </div>
       <div className="doctor-form-container-main">
         <form action="">
+        <h1>Doctor  Reggistration</h1>
+          <h2>Personal Information</h2>
           <div className="top-doctorinput-container">
           <div className="image-upload-container">
               <input
@@ -46,11 +54,19 @@ const NewDoctor = () => {
                 <input type="text" id='fname' name='fname'/>
               </div>
               <div className="personalinput-container">
-                <label>Speciality:</label>
+                <label>Age:</label>
                 <input type="text" id='fname' name='fname'/>
+              </div>
+              <div className="personalradio-container">
+                <label>Gender</label>
+                <div className="radio-input">
+                  <label htmlFor="">Male: <input type="radio" id='male' name='gender'/></label>
+                  <label htmlFor="">Female: <input type="radio" id='female' name='gender'/></label>
+                </div>
               </div>
             </div>
           </div>
+          <h2>Contact Information</h2>
           <div className="middle-doctorinput-container">
             <div className="doctor-textarea-container">
               <label htmlFor="">Address:</label>
@@ -66,6 +82,31 @@ const NewDoctor = () => {
                 <input type="text" name="number" id="number" />
               </div>
             </div>
+          </div>
+          <h2>Professional Information</h2>
+          <div className="bottom-doctorinput-container">
+            <div className="doctor-input">
+              <label htmlFor="">Medical Registration Number:</label>
+              <input type="text" name="rnumber" id="rnumber" />
+            </div>
+            <div className="doctor-input">
+              <label htmlFor="">Years of experience:</label>
+              <input type="text" name="experience" id="experience" />
+            </div>
+            <div className="doctor-input">
+              <label htmlFor="">Specialization:</label>
+              <input type="text" name="spesiality" id="spesiality" />
+            </div>
+            <div className="doctor-input">
+              <label htmlFor="">Type of Employement:</label>
+              <div className="radio-input">
+                <label htmlFor="">Part-Time : <input type="radio" name="employment" id="part-time" /></label>
+                <label htmlFor="">Full-Time : <input type="radio" name="employment" id="full-time" /></label>
+              </div>
+            </div>
+          </div>
+          <div className="doctor-submit-container">
+            <button type="submit">Register Now</button>
           </div>
         </form>
       </div>

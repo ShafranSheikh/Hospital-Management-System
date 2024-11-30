@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import Tabs from '../components/tabs/Tabs.jsx';
 import axios from 'axios';
+import PatientTable from '../components/patient-table/PatientTable.jsx';
+import DoctorTable from '../components/doctor-table/DoctorTable.jsx';
+import StaffTable from '../components/staff-table/StaffTable.jsx';
 const Tables = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -15,62 +18,16 @@ const Tables = () => {
   // Data for tables
   const tabsData = [
     {
-      label: 'Home',
-      content: <table border="1">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Age</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr >
-            <td>id</td>
-            <td>name</td>
-            <td>age</td>
-          </tr>
-      </tbody>
-    </table>,
+      label: 'Patients',
+      content: <PatientTable />,
     },
     {
-      label: 'Profile',
-      content: <table border="1">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Product</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td>id</td>
-            <td>product</td>
-            <td>price</td>
-          </tr>
-          
-      </tbody>
-    </table>,
+      label: 'Doctors',
+      content: <DoctorTable />,
     },
     {
-      label: 'Settings',
-      content: <table border="1">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>City</th>
-          <th>Population</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <td>id</td>
-            <td>city</td>
-            <td>population</td>
-          </tr>
-      </tbody>
-    </table>,
+      label: 'Staffs',
+      content: <StaffTable/>,
     },
   ];
 

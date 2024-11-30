@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.doctor-table-container {
+    max-height: 30rem;
+    max-width: 125rem;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+/* Scrollbar styling for WebKit-based browsers */
+.doctor-table-container::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+    background-color: #f1f1f1; /* Background color of the scrollbar track */
+}
+
+.doctor-table-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Scrollbar thumb color */
+    border-radius: 10px; /* Rounded edges for the scrollbar thumb */
+}
+
+.doctor-table-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Thumb color when hovered */
+}
+
+/* Scrollbar track styling (optional) */
+.doctor-table-container::-webkit-scrollbar-track {
+    background-color: #e0e0e0; /* Color of the scrollbar track */
+}
+
+/* For Firefox */
+.doctor-table-container {
+    scrollbar-width: thin; /* Thin scrollbar */
+    scrollbar-color: #a5aadd #f1f1f1; /* Thumb color and track color */
+}
+.doctor-table-container table {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border-collapse: separate; /* Required for border-radius to work */
+    border-spacing: 4px; /* Adds space between cells */
+}
+.doctor-table-container table thead{
+    height: 3rem;
+    background-color: #89A8B2;
+    text-align: center;
+    font-size: 18px;
+}
+ .doctor-table-container table thead th{
+    border-radius: 5px;
+    border: 1px solid #091057;
+    font-family: 'Poppins';
+}
+.doctor-table-container table tbody tr{
+    height: 3rem;
+    font-size: 17px;
+    padding: 10px;
+    margin: 10px;
+}
+.doctor-table-container table td{
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 7px;
+    border: 1px solid #091057;
+    font-family: 'Poppins';
+}
+.doctor-table-container .td-doctor-button button{
+    background-color:#DC143C ;
+    color: #fff;
+    height: 2rem;
+    width: 8rem;
+    border-radius: 10px;
+    font-family: 'Poppins';
+}
+.doctor-table-container .td-doctor-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
