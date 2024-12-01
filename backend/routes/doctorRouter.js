@@ -16,4 +16,29 @@ router.post('/register', upload.single('image'), async (req,res)=>{
         res.status(500).json({ error: 'Failed to upload Doctor Item' });
     }
 });
+
+router.get('/details', async (req,res)=>{
+    try{
+        const doctorDetails = await DoctorSchema.find({});
+        const doctorData = doctorDetails.map(details =>({
+            id: details._id,
+            fname: details.fname,
+            lname: details.lname,
+            age: details.age,
+            data: `data:${details.data.toString('base64')}`,
+            gender: details.gender,
+            address:details.address,
+            email: details.email,
+            pnumber: details.pnumber,
+            rnumber: details.rnumber,
+            experience:details.experience,
+            speciality: details.speciality,
+            employment: details.employment,
+        }));
+        res.json(doctorData);
+    }catch(error){
+        console.error('Error fetching Doctor Details:', error);
+        res.status(500).json({ error: 'Failed to fetch Doctor details' });
+    }
+})
 export default router

@@ -1,6 +1,20 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
+import axios from 'axios';
 import '../doctor-table/doctor-table.css'
 const DoctorTable = () => {
+  const [doctorDetails, setDoctordetails] = useState([]);
+//fetching doctor details from the backend
+useEffect(()=>{
+  const fetchDoctorDetails = async () =>{
+    try{
+      const response = await axios.get('http://localhost:3000/api/doctors/details')
+      setDoctordetails(response.data);
+    }catch(error){
+      console.error('Error fetching Doctor Details',error);
+    }
+  }
+  fetchDoctorDetails();
+},[]);
   return (
     <div className="doctor-table-container">
       <table border="1">
@@ -16,24 +30,30 @@ const DoctorTable = () => {
           <th>Experience</th>
           <th>Specialization</th>
           <th>Employment</th>
-          <th>Resign</th>
         </tr>
       </thead>
       <tbody>
-          <tr>
-            <td>id</td>
-            <td>Name</td>
-            <td>Age</td>
-            <td>Gender</td>
-            <td>Email</td>
-            <td>Phone</td>
-            <td>Reg No</td>
-            <td>Experience</td>
-            <td>Specialization</td>
-            <td>Employment</td>
-            <td className='td-doctor-button'><button>Resign</button></td>
-          </tr>
-      </tbody>
+  {doctorDetails.length > 0 ? (
+    doctorDetails.map((doctor) => (
+      <tr key={doctor.id}>
+        <td>{doctor.id}</td>
+        <td>{doctor.fname} {doctor.lname}</td>
+        <td>{doctor.age}</td>
+        <td>{doctor.gender}</td>
+        <td>{doctor.email}</td>
+        <td>{doctor.pnumber}</td>
+        <td>{doctor.rnumber}</td>
+        <td>{doctor.experience}</td>
+        <td>{doctor.speciality}</td>
+        <td>{doctor.employment}</td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td colSpan="10">No doctor details available</td>
+    </tr>
+  )}
+</tbody>
     </table>
     </div>
     
