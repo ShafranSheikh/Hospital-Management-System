@@ -4,7 +4,7 @@
     background-color: aliceblue;
     margin: 20px 10px;
     display: grid;
-    grid-template-columns: 20rem 20rem;
+    grid-template-columns: 20rem 20rem 20rem;
     justify-content: left;
     align-items: center;
     gap: 40px;
@@ -17,6 +17,9 @@
     align-items: center;
     justify-content: center;
     box-shadow: 2px 2px 20px #aaaaaa;
+}
+.chart-container{
+
 }
 .doctor-stats .doctor-card-container h1{
     font-size: 80px;

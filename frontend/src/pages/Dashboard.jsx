@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../redux/features/authSlice.js';
 import { useNavigate } from 'react-router-dom';
@@ -7,9 +7,20 @@ import '../styles/dashboard.css';
 
 const Dashboard = () => {
     const [showPopover, setShowPopover] = useState(false);
+    const [doctorCount, setDoctorCount] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    useEffect(()=>{
+        const fetchDoctorCount = async ()=>{
+            try{
+                const response = await axios.get('http://localhost:3000/api/doctors/count');
+                setDoctorCount(response.data.count);
+            }catch(error){
+                console.error("Error fetching doctor count:", error);
+            }
+        }
+        fetchDoctorCount();
+    },[]);
     const handleLogout = async () => {
         try {
             // Get the token from local storage
@@ -62,12 +73,12 @@ const Dashboard = () => {
                     <h3>Total Number of Patients</h3>
                 </div>
                 <div className="stat-card">
-                    <h1>01</h1>
+                    <h1>{doctorCount}</h1>
                     <h3>Total Number of Doctors</h3>
                 </div>
                 <div className="stat-card">
                     <h1>01</h1>
-                    <h3>Total Number of Specialists</h3>
+                    <h3>Resigned Doctors</h3>
                 </div>
                 <div className="stat-card">
                     <h1>01</h1>

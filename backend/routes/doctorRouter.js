@@ -61,5 +61,14 @@ router.get('/details', async (req,res)=>{
         console.error('Error fetching Doctor Details:', error);
         res.status(500).json({ error: 'Failed to fetch Doctor details' });
     }
+});
+
+router.get('/count', async (req,res)=>{
+    try{
+        const count = await DoctorSchema.countDocuments();
+        res.status(200).json({ count });
+    }catch(error){
+        res.status(500).json({message: "Failed to fetch doctor count", error});
+    }
 })
 export default router

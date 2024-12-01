@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/doctoroverview.css';
 import axios from 'axios';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import DoctorCountChart from '../components/Doctor-count-chart/DoctorCountChart';
 const DoctorOverview = () => {
     const [doctorDetails, setDoctordetails] = useState([]);
+    const [doctorCount, setDoctorCount] = useState(0);
     //fetching doctor details from the backend
 useEffect(()=>{
     const fetchDoctorDetails = async () =>{
@@ -16,6 +18,15 @@ useEffect(()=>{
         }
     }
     fetchDoctorDetails();
+    const fetchDoctorCount = async ()=>{
+        try{
+            const response = await axios.get('http://localhost:3000/api/doctors/count');
+            setDoctorCount(response.data.count);
+        }catch(error){
+            console.error("Error fetching doctor count:", error);
+        }
+    }
+    fetchDoctorCount();
 },[]);
     const navigate = useNavigate();
   return (
@@ -26,12 +37,15 @@ useEffect(()=>{
         </div>
         <div className="doctor-stats">
             <div className="doctor-card-container">
-                <h1>20</h1>
+                <h1>{doctorCount}</h1>
                 <p>Total Number of Doctors</p>
             </div>
             <div className="doctor-card-container">
                 <h1>10</h1>
                 <p>Total Number of Resigned Doctors</p>
+            </div>
+            <div className="chart-container">
+            <DoctorCountChart/>
             </div>
         </div>
         <div className="doctor-overview-container">
