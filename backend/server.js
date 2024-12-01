@@ -8,6 +8,7 @@ import User from "./models/UserSchema.js";
 import Blacklist from "./models/blacklistSchema.js";
 import UserRouter from './routes/userRoutes.js'
 import patientRouter from './routes/patientRoutes.js'
+import doctorRouter from './routes/doctorRouter.js'
 const app = express();
 env.config();
 
@@ -53,7 +54,8 @@ passport.use(
 
 // Routes
 app.use('/api/auth', UserRouter);
-app.use('/api/patient', patientRouter)
+app.use('/api/patient', patientRouter);
+app.use('/api/doctors',doctorRouter);
 
 // Start the server
 app.listen(3000, () => {

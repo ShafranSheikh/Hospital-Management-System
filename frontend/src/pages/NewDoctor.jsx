@@ -1,25 +1,72 @@
-import React from 'react'
+import React,{useState} from 'react'
 import '../styles/newdoctor.css';
 import { useNavigate } from 'react-router-dom';
-import placeholder from '../assets/photo.png'
+import placeholder from '../assets/photo.png';
+import axios from 'axios';
 const NewDoctor = () => {
+  const[image, setImage] = useState(null);
+  const[fname, setFname] = useState("");
+  const[lname, setLname] = useState("");
+  const [age, setAge] = useState('');
+  const [gender, setGender] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail]= useState("");
+  const [pnumber, setPnumber] = useState('');
+  const[rnumber, setRnumber] = useState('');
+  const [experience, setExperience]= useState('');
+  const [speciality, setSpeciality] = useState("");
+  const [employment, setEmployment] = useState("");
   const navigate = useNavigate();
-    const handleFileChange = (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        console.log("Selected file:", file.name);
-        // Handle file upload logic here
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+  };
+  const handleGenderChange = (event) =>{
+    setGender(event.target.value);
+  }
+  const handleEmploymentChange = (event)=>{
+    setEmployment(event.target.value);
+  }
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const formdata = new FormData();
+      formdata.append('image', image);
+      formdata.append('fname', fname);
+      formdata.append('lname', lname);
+      formdata.append('age', age);
+      formdata.append('gender', gender);
+      formdata.append('address', address);
+      formdata.append('email', email);
+      formdata.append('pnumber', pnumber);
+      formdata.append('rnumber', rnumber);
+      formdata.append('experience', experience);
+      formdata.append('speciality', speciality);
+      formdata.append('employment', employment);
+      try{
+        const response = await axios.post("http://localhost:3000/api/doctors/register", formdata,{
+          headers:{
+            'Content-Type': 'multipart/form-data'
+          },
+        });
+        alert ('Doctor Registered Successfully!!');
+        window.location.reload();
+      }catch(error){
+        console.error('Error registering Doctor',error);
       }
-    };
+    }catch(error){
+      console.error('Error Connecting to the server', error);
+    }
+  }
 
   return (
     <>
-    <div className="patient-header">
-                <h1>Doctors</h1>
-                <button onClick={()=> navigate('/tables')}>Back to Tables</button>
-        </div>
+      <div className="patient-header">
+        <h1>Doctors</h1>
+        <button onClick={()=> navigate('/tables')}>Back to Tables</button>
+      </div>
       <div className="doctor-form-container-main">
-        <form action="">
+        <form onSubmit={handleFormSubmit}>
         <h1>Doctor  Reggistration</h1>
           <h2>Personal Information</h2>
           <div className="top-doctorinput-container">
@@ -30,6 +77,7 @@ const NewDoctor = () => {
                 accept="image/png, image/jpeg"
                 hidden
                 onChange={handleFileChange}
+                name='image'
               />
               <label htmlFor="doctor-image-upload" className="upload-box">
               <div className="upload-icon">
@@ -47,21 +95,21 @@ const NewDoctor = () => {
             <div className="doctor-personal">
               <div className="personalinput-container">
                 <label>First name:</label>
-                <input type="text" id='fname' name='fname'/>
+                <input type="text" id='fname' name='fname'value={fname} onChange={(e)=>setFname(e.target.value)}/>
               </div>
               <div className="personalinput-container">
                 <label>Last Name:</label>
-                <input type="text" id='fname' name='fname'/>
+                <input type="text" id='lname' name='lname'value={lname} onChange={(e)=>setLname(e.target.value)}/>
               </div>
               <div className="personalinput-container">
                 <label>Age:</label>
-                <input type="text" id='fname' name='fname'/>
+                <input type="text" id='age' name='age'value={age} onChange={(e)=>setAge(e.target.value)}/>
               </div>
               <div className="personalradio-container">
                 <label>Gender</label>
                 <div className="radio-input">
-                  <label htmlFor="">Male: <input type="radio" id='male' name='gender'/></label>
-                  <label htmlFor="">Female: <input type="radio" id='female' name='gender'/></label>
+                  <label htmlFor="">Male: <input type="radio" id='male' name='gender'value='male' checked={gender === 'male'} onChange={handleGenderChange}/></label>
+                  <label htmlFor="">Female: <input type="radio" id='female' name='gender'value='female' checked={gender === 'female'} onChange={handleGenderChange}/></label>
                 </div>
               </div>
             </div>
@@ -70,16 +118,16 @@ const NewDoctor = () => {
           <div className="middle-doctorinput-container">
             <div className="doctor-textarea-container">
               <label htmlFor="">Address:</label>
-              <textarea name="address" id="address" />
+              <textarea name="address" id="address" value={address} onChange={(e)=>setAddress(e.target.value)}/>
             </div>
             <div className="doctor-contactinput-container">
               <div className="doctor-emailinput">
                 <label htmlFor="">Email:</label>
-                <input type="email" name="email" id="email" />
+                <input type="email" name="email" id="email"value={email} onChange={(e)=>setEmail(e.target.value)} />
               </div>
               <div className="doctor-numberinput">
                 <label htmlFor="">Phone:</label>
-                <input type="text" name="number" id="number" />
+                <input type="text" name="pnumber" id="pnumber" value={pnumber} onChange={(e)=>setPnumber(e.target.value)}/>
               </div>
             </div>
           </div>
@@ -87,21 +135,21 @@ const NewDoctor = () => {
           <div className="bottom-doctorinput-container">
             <div className="doctor-input">
               <label htmlFor="">Medical Registration Number:</label>
-              <input type="text" name="rnumber" id="rnumber" />
+              <input type="text" name="rnumber" id="rnumber" value={rnumber} onChange={(e)=>setRnumber(e.target.value)}/>
             </div>
             <div className="doctor-input">
               <label htmlFor="">Years of experience:</label>
-              <input type="text" name="experience" id="experience" />
+              <input type="text" name="experience" id="experience" value={experience} onChange={(e)=>setExperience(e.target.value)} />
             </div>
             <div className="doctor-input">
               <label htmlFor="">Specialization:</label>
-              <input type="text" name="spesiality" id="spesiality" />
+              <input type="text" name="spesiality" id="spesiality" value={speciality} onChange={(e)=>setSpeciality(e.target.value)} />
             </div>
             <div className="doctor-input">
               <label htmlFor="">Type of Employement:</label>
               <div className="radio-input">
-                <label htmlFor="">Part-Time : <input type="radio" name="employment" id="part-time" /></label>
-                <label htmlFor="">Full-Time : <input type="radio" name="employment" id="full-time" /></label>
+                <label htmlFor="">Part-Time : <input type="radio" name="employment" id="part-time" value='part-time'checked={employment === 'part-time'} onChange={handleEmploymentChange}/></label>
+                <label htmlFor="">Full-Time : <input type="radio" name="employment" id="full-time" value='full-time'checked={employment === 'full-time'} onChange={handleEmploymentChange}/></label>
               </div>
             </div>
           </div>
