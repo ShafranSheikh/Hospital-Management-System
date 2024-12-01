@@ -1,7 +1,10 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios';
-import '../doctor-table/doctor-table.css'
+import { useNavigate } from 'react-router-dom';
+import '../doctor-table/doctor-table.css';
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 const DoctorTable = () => {
+  const navigate = useNavigate();
   const [doctorDetails, setDoctordetails] = useState([]);
 //fetching doctor details from the backend
 useEffect(()=>{
@@ -17,6 +20,7 @@ useEffect(()=>{
 },[]);
   return (
     <div className="doctor-table-container">
+      <h2><button onClick={()=>navigate('/doctor/overview')}>View Complete Doctor overview &nbsp;<ArrowOutwardIcon/></button></h2>
       <table border="1">
       <thead>
         <tr>

@@ -10,6 +10,7 @@ import ProtectedRoute from './components/protectedRoute'
 import Tables from './pages/Tables'
 import Newpatient from './pages/Newpatient'
 import NewDoctor from './pages/NewDoctor'
+import DoctorOverview from './pages/DoctorOverview'
 function App() {
   return (
     <>
@@ -35,6 +36,11 @@ function App() {
         <Route path='/tables/newdoctor' element={
           <ProtectedRoute>
             <NewDoctor />
+          </ProtectedRoute>
+        }/>
+        <Route path='/doctor/overview' element={
+          <ProtectedRoute>
+            <DoctorOverview />
           </ProtectedRoute>
         }/>
         <Route path='/login' element={<Login />} />

@@ -30,6 +30,20 @@
     scrollbar-width: thin; /* Thin scrollbar */
     scrollbar-color: #a5aadd #f1f1f1; /* Thumb color and track color */
 }
+
+.doctor-table-container h2 button{
+    height: 2.5rem;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Poppins';
+    text-decoration: underline;
+    color: #091057;
+    cursor: pointer;
+}
 .doctor-table-container table {
     width: 100%;
     height: 100%;

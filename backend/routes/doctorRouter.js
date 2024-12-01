@@ -4,18 +4,38 @@ import multer from "multer";
 const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-router.post('/register', upload.single('image'), async (req,res)=>{
-    try{
+router.post('/register', upload.single('image'), async (req, res) => {
+    try {
         const doctorImage = req.file;
-        const {fname, lname, age, gender,address,email,pnumber,rnumber,experience,speciality,employment } = req.body;
-        const newDoctor = new DoctorSchema({fname, lname, age,data:doctorImage.buffer, gender,address,email,pnumber,rnumber,experience,speciality,employment});
+        const { fname, lname, age, gender, address, email, pnumber, rnumber, experience, speciality, employment } = req.body;
+        if (!doctorImage) {
+            return res.status(400).json({ error: 'Image file is required' });
+        }
+        if (!['image/jpeg', 'image/png'].includes(doctorImage.mimetype)) {
+            return res.status(400).json({ error: 'Only JPEG and PNG images are allowed' });
+        }
+        const newDoctor = new DoctorSchema({
+            fname,
+            lname,
+            age: Number(age),
+            data: doctorImage.buffer,
+            contentType: doctorImage.mimetype,
+            gender,
+            address,
+            email,
+            pnumber,
+            rnumber,
+            experience: Number(experience),
+            speciality,
+            employment,
+        });
         await newDoctor.save();
-        res.status(200).json({ message: 'Doctor data Added to the database successfully' });
-    }catch(error){
-        console.error('Error uploading Doctor Details:', error);
-        res.status(500).json({ error: 'Failed to upload Doctor Item' });
+        res.status(200).json({ message: 'Doctor data added to the database successfully' });
+    } catch (error) {
+        console.error('Error uploading Doctor Details:', error.errors || error);
+        res.status(500).json({ error: 'Failed to upload Doctor details' });
     }
-});
+});  
 
 router.get('/details', async (req,res)=>{
     try{
@@ -25,7 +45,8 @@ router.get('/details', async (req,res)=>{
             fname: details.fname,
             lname: details.lname,
             age: details.age,
-            data: `data:${details.data.toString('base64')}`,
+            data: `data:${details.contentType};base64,${details.data.toString('base64')}`,
+            contentType: details.contentType,
             gender: details.gender,
             address:details.address,
             email: details.email,

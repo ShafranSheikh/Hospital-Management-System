@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.doctor-stats{
+    height: 10rem;
+    background-color: aliceblue;
+    margin: 20px 10px;
+    display: grid;
+    grid-template-columns: 20rem 20rem;
+    justify-content: left;
+    align-items: center;
+    gap: 40px;
+}
+.doctor-stats .doctor-card-container{
+    height: 9rem;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows:auto;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 20px #aaaaaa;
+}
+.doctor-stats .doctor-card-container h1{
+    font-size: 80px;
+    margin: 0;
+    height: 5rem;
+    font-family: 'Poppins';
+}
+.doctor-stats .doctor-card-container p{
+    font-size: 16px;
+    padding: 20px 10px;
+    font-family: 'Poppins';
+}
+.doctor-overview-container{
+    min-height: 40em;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+    gap: 15px;
+}
+.doctor-overview-container .doctor-overview-card{
+    height: 30em;
+    width: 18em;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    margin:20px 10px ;
+    transition: all .5s ease;
+}
+.doctor-overview-container .doctor-overview-card img{
+    width: 100%;
+    height: 22em;
+    margin: 0;
+    background-repeat: no-repeat;
+    object-fit:fill;
+}
+.doctor-overview-container .doctor-overview-card h2{
+    margin: 0;
+    font-family: 'Poppins';
+}
+.doctor-overview-container .doctor-overview-card p,
+.doctor-overview-container .doctor-overview-card span{
+    font-family: 'Poppins';
+}
+.doctor-overview-container .doctor-overview-card span{
+    color: blue;
+}
+.doctor-overview-container .doctor-overview-card  button{
+    background: none;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    cursor: pointer;
+}

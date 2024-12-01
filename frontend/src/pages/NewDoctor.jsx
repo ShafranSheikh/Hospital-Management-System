@@ -78,6 +78,7 @@ const NewDoctor = () => {
                 hidden
                 onChange={handleFileChange}
                 name='image'
+                required
               />
               <label htmlFor="doctor-image-upload" className="upload-box">
               <div className="upload-icon">
@@ -95,15 +96,15 @@ const NewDoctor = () => {
             <div className="doctor-personal">
               <div className="personalinput-container">
                 <label>First name:</label>
-                <input type="text" id='fname' name='fname'value={fname} onChange={(e)=>setFname(e.target.value)}/>
+                <input type="text" id='fname' name='fname'value={fname} onChange={(e)=>setFname(e.target.value)}required/>
               </div>
               <div className="personalinput-container">
                 <label>Last Name:</label>
-                <input type="text" id='lname' name='lname'value={lname} onChange={(e)=>setLname(e.target.value)}/>
+                <input type="text" id='lname' name='lname'value={lname} onChange={(e)=>setLname(e.target.value)}required/>
               </div>
               <div className="personalinput-container">
                 <label>Age:</label>
-                <input type="text" id='age' name='age'value={age} onChange={(e)=>setAge(e.target.value)}/>
+                <input type="text" id='age' name='age'value={age} onChange={(e)=>setAge(e.target.value)} required/>
               </div>
               <div className="personalradio-container">
                 <label>Gender</label>
@@ -118,16 +119,16 @@ const NewDoctor = () => {
           <div className="middle-doctorinput-container">
             <div className="doctor-textarea-container">
               <label htmlFor="">Address:</label>
-              <textarea name="address" id="address" value={address} onChange={(e)=>setAddress(e.target.value)}/>
+              <textarea name="address" id="address" value={address} onChange={(e)=>setAddress(e.target.value)} required/>
             </div>
             <div className="doctor-contactinput-container">
               <div className="doctor-emailinput">
                 <label htmlFor="">Email:</label>
-                <input type="email" name="email" id="email"value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <input type="email" name="email" id="email"value={email} onChange={(e)=>setEmail(e.target.value)}  required/>
               </div>
               <div className="doctor-numberinput">
                 <label htmlFor="">Phone:</label>
-                <input type="text" name="pnumber" id="pnumber" value={pnumber} onChange={(e)=>setPnumber(e.target.value)}/>
+                <input type="text" name="pnumber" id="pnumber" value={pnumber} onChange={(e)=>setPnumber(e.target.value)} required/>
               </div>
             </div>
           </div>
@@ -135,15 +136,15 @@ const NewDoctor = () => {
           <div className="bottom-doctorinput-container">
             <div className="doctor-input">
               <label htmlFor="">Medical Registration Number:</label>
-              <input type="text" name="rnumber" id="rnumber" value={rnumber} onChange={(e)=>setRnumber(e.target.value)}/>
+              <input type="text" name="rnumber" id="rnumber" value={rnumber} onChange={(e)=>setRnumber(e.target.value)} required/>
             </div>
             <div className="doctor-input">
               <label htmlFor="">Years of experience:</label>
-              <input type="text" name="experience" id="experience" value={experience} onChange={(e)=>setExperience(e.target.value)} />
+              <input type="text" name="experience" id="experience" value={experience} onChange={(e)=>setExperience(e.target.value)} required />
             </div>
             <div className="doctor-input">
               <label htmlFor="">Specialization:</label>
-              <input type="text" name="spesiality" id="spesiality" value={speciality} onChange={(e)=>setSpeciality(e.target.value)} />
+              <input type="text" name="spesiality" id="spesiality" value={speciality} onChange={(e)=>setSpeciality(e.target.value)} required />
             </div>
             <div className="doctor-input">
               <label htmlFor="">Type of Employement:</label>

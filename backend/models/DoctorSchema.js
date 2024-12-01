@@ -4,6 +4,7 @@ const DoctorSchema = new mongoose.Schema({
     lname:{type:String, required : true},
     age:{type:Number, required : true},
     data:{type:Buffer, required :true},
+    contentType: { type: String, required: true },
     gender:{type:String, required: true},
     address:{type:String, required: true},
     email:{type:String, required: true},
