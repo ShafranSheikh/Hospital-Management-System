@@ -41,7 +41,7 @@ useEffect(()=>{
                 <p>Total Number of Doctors</p>
             </div>
             <div className="doctor-card-container">
-                <h1>10</h1>
+                <h1>6</h1>
                 <p>Total Number of Resigned Doctors</p>
             </div>
             <div className="chart-container">

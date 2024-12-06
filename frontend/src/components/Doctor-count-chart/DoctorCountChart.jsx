@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoctorCountChart = () => {
     const [doctorCount, setDoctorCount] = useState(0);
-    const [resignedCount, setResignedCount] = useState(10); // Example resigned doctors count
+    const [resignedCount, setResignedCount] = useState(6); // Example resigned doctors count
 
     useEffect(() => {
         const fetchDoctorCount = async () => {
