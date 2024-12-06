@@ -31,7 +31,7 @@ useEffect(()=>{
     const navigate = useNavigate();
   return (
     <>
-        <div className="patient-header">
+        <div className="doctor-header">
             <h1>Doctor Overview</h1>
             <button onClick={()=> navigate('/tables')}>Back to Tables</button>
         </div>
