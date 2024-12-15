@@ -55,7 +55,7 @@ useEffect(()=>{
                     <h2>Dr.&nbsp;{doctor.fname}&nbsp;{doctor.lname}</h2>
                     <p>{doctor.speciality}</p>
                     <p>Doctor ID:&nbsp; <span>{doctor.rnumber}</span></p>
-                    <button><OpenInNewIcon/></button>
+                    <button onClick={()=>navigate(`/doctor/details/${doctor.id}`)}><OpenInNewIcon/></button>
                 </div>
             ))):(
                 <p>No Doctor details available</p>

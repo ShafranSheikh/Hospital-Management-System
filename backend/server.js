@@ -5,7 +5,6 @@ import env from 'dotenv';
 import { ExtractJwt, Strategy as JwtStratergy } from "passport-jwt";
 import passport from "passport";
 import User from "./models/UserSchema.js";
-import Blacklist from "./models/blacklistSchema.js";
 import UserRouter from './routes/userRoutes.js'
 import patientRouter from './routes/patientRoutes.js'
 import doctorRouter from './routes/doctorRouter.js'

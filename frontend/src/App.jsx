@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/Footer';
 import ProtectedRoute from './components/ProtectedRoute'
+import DoctorDetails from './pages/DoctorDetails';
 
 // Lazy loading the components
 const Hero = lazy(() => import('./pages/Hero'));
@@ -62,6 +63,12 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path='/doctor/details/:id'
+            element={
+              <ProtectedRoute>
+                <DoctorDetails/>
+              </ProtectedRoute>
+            }/>
             <Route path='/login' element={<Login />} />
             <Route path='/signin' element={<Signin />} />
           </Routes>

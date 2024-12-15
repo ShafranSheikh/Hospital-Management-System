@@ -62,6 +62,71 @@ router.get('/details', async (req,res)=>{
         res.status(500).json({ error: 'Failed to fetch Doctor details' });
     }
 });
+router.get('/details/:id', async (req,res)=>{
+    try{
+        const {id} = req.params;
+        const doctor = await DoctorSchema.findById(id);
+        if(!doctor){
+            return res.status(404).json({error: 'Doctor not Found'});
+        }
+        const doctorData = {
+            id: doctor._id,
+            fname: doctor.fname,
+            lname: doctor.lname,
+            age: doctor.age,
+            data: `data:${doctor.contentType};base64,${doctor.data.toString('base64')}`,
+            gender: doctor.gender,
+            address: doctor.address,
+            email: doctor.email,
+            pnumber: doctor.pnumber,
+            rnumber: doctor.rnumber,
+            experience: doctor.experience,
+            speciality: doctor.speciality,
+            employment: doctor.employment,
+        }
+        res.json(doctorData);
+    }catch(error){
+        console.error('Error fetching doctor details by id:', error);
+        res.status(500).json({error: 'failed to fetch doctor details by id'});
+    }
+});
+router.delete('/details/:id', async (req,res)=>{
+    try{
+        const {id} = req.params;
+        const deleteDocotr = await DoctorSchema.findByIdAndDelete(id);
+        if(!deleteDocotr){
+            return res.status(404).json({error: 'Docotor Not Found'});
+        }
+        res.status(200).json({message: 'Doctor deleted Successfully'});
+    }catch(error){
+        console.log('Error deleting doctor', error);
+        res.status(500).json({error: 'Failed to delete doctor'});
+    }
+})
+router.put('/details/:id', upload.single('image'), async (req,res)=>{
+    try{
+        const {id} = req.params;
+        const doctorImage = req.file;
+        const { fname, lname, age, gender, address, email, pnumber, rnumber, experience, speciality, employment } = req.body;
+        const updateData  ={
+            fname,lname,age: Number(age),gender,address,email,pnumber,rnumber,experience:Number(experience),speciality, employment,
+        };
+        //handle imageupload if provided
+        if(doctorImage){
+            updateData.data = doctorImage.buffer;
+            updateData.contentType = doctorImage.mimetype;
+        }
+        const updateDoctor = await DoctorSchema.findByIdAndUpdate(id, updateData,{new:true});
+        if(!updateDoctor){
+            return res.status(404).json({error: 'Doctor Not Found'});
+        }
+        res.status(200).json({message: 'Doctor Updated Successfully', doctor: updateDoctor})
+    }catch(error){
+        console.error('Error updating doctor:', error);
+        res.status(500).json({error: 'Failed to update doctor'})
+    }
+});
+
 
 router.get('/count', async (req,res)=>{
     try{

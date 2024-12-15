@@ -1,0 +1,207 @@
+import React,{useState, useEffect} from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import '../styles/doctordetails.css'
+const DoctorDetails = () => {
+    const {id} = useParams(); //Extract doctor id from url
+    const navigate = useNavigate();
+    const [doctorDetails, setDocterDetails] = useState(null);
+    const [editMode, setEditMode] = useState(false);
+    const [formData, setFormData]  = useState({});
+    useEffect(()=>{
+        const fetchDoctorDetails  = async ()=>{
+            try{
+                const response  = await axios.get(`http://localhost:3000/api/doctors/details/${id}`);
+                setDocterDetails(response.data);
+                setFormData(response.data); //pre-fill form with existing details
+            }catch(error){
+                console.error('Error fetching doctor details:', error);
+            };
+        };
+        fetchDoctorDetails();
+    },[id]);
+
+    //handle form filed changes
+    const handleInputChange = (e) =>{
+        const {name, value} = e.target;
+        setFormData({...formData, [name]: value});
+    };
+
+    //handle form submission for updates
+    const updateDoctor = async (e) =>{
+        e.preventDefault();
+        try{
+            const formDataObject = new FormData();
+            for( let key in formData){
+                formDataObject.append(key, formData[key]);
+            }
+            const response = await axios.put(`http://localhost:3000/api/doctors/details/${id}`, formDataObject,{
+                headers:{'Content-Type': 'multipart/form-data'},
+            });
+            alert('Doctor details updated successfully');
+            setDocotrDetails(response.data.doctor); // Update displayed details
+            setEditMOde(false); // exit edit mode
+        }catch(error){
+            console.error('Error updating doctor', error);
+            alert('Failed to update doctor details');
+        }
+    };
+    const deleteDoctor = async ()=>{
+        try{
+            await axios.delete(`http://localhost:3000/api/doctors/details/${id}`);
+            alert('Docotor deleted successfully');
+            navigate('/doctor/overview');
+        }catch(error){
+            console.error('Error deleting doctor', error);
+            alert('Failed to delete docotr');
+        }
+    };
+
+    if(!doctorDetails){
+        return <p>Loading doctor details.....</p>;
+    }
+    return (
+        <div className='doctor-details-container'>
+            {editMode ? (
+                <form className="doctor-update-form" onSubmit={updateDoctor}>
+                <h1>Update Doctor Details</h1>
+                <input
+                    type="text"
+                    name="fname"
+                    value={formData.fname}
+                    onChange={handleInputChange}
+                    placeholder="First Name"
+                    required
+                />
+                <input
+                    type="text"
+                    name="lname"
+                    value={formData.lname}
+                    onChange={handleInputChange}
+                    placeholder="Last Name"
+                    required
+                />
+                <input
+                    type="number"
+                    name="age"
+                    value={formData.age}
+                    onChange={handleInputChange}
+                    placeholder="Age"
+                    required
+                />
+                <input
+                    type="text"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                    placeholder="Gender"
+                    required
+                />
+                <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    placeholder="Address"
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email"
+                    required
+                />
+                <input
+                    type="text"
+                    name="pnumber"
+                    value={formData.pnumber}
+                    onChange={handleInputChange}
+                    placeholder="Phone Number"
+                    required
+                />
+                <input
+                    type="text"
+                    name="rnumber"
+                    value={formData.rnumber}
+                    onChange={handleInputChange}
+                    placeholder="Registration Number"
+                    required
+                />
+                <input
+                    type="number"
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleInputChange}
+                    placeholder="Years of Experience"
+                    required
+                />
+                <input
+                    type="text"
+                    name="speciality"
+                    value={formData.speciality}
+                    onChange={handleInputChange}
+                    placeholder="Speciality"
+                    required
+                />
+                <input
+                    type="text"
+                    name="employment"
+                    value={formData.employment}
+                    onChange={handleInputChange}
+                    placeholder="Type of Employment"
+                    required
+                />
+                <input
+                    type="file"
+                    name="image"
+                    onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
+                />
+                <button type="submit">Update Doctor</button>
+                <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
+                </form>
+            ) : (
+                <>
+                    <div className="doctor-personal-details">
+                        <h1>Doctor Personal Details</h1>
+                        <div className="doctor-personal-content-container">
+                            <div className="doctor-image-container">
+                                <img src={doctorDetails.data} alt="Doctor" />
+                            </div>
+                            <div className="personal-content">
+                                <p><span>Full Name:</span>&nbsp; {doctorDetails.fname} {doctorDetails.lname}</p>
+                                <p><span>Age:</span> &nbsp;{doctorDetails.age}</p>
+                                <p><span>Gender:</span> &nbsp;{doctorDetails.gender}</p>
+                                <p><span>ID: </span>&nbsp;{doctorDetails.rnumber}</p>
+                            </div>
+                            <div className="doctor-manager-container">
+                                <button onClick={() => setEditMode(true)}>Update Doctor Details</button>
+                                <button onClick={deleteDoctor}>Remove Doctor</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="doctor-contact-information">
+                        <h1>Doctor Contact details</h1>
+                        <div className="doctor-contact-content-container">
+                            <p><span>Address:</span>&nbsp; {doctorDetails.address}</p>
+                            <p><span>Email:</span>&nbsp;{doctorDetails.email}</p>
+                            <p> <span>Phone:</span>&nbsp;{doctorDetails.pnumber}</p>
+                        </div>
+                    </div>
+                    <div className="doctor-professional-details">
+                        <h1>Doctor Professional Details</h1>
+                        <div className="doctor-prefessional-content-container">
+                            <p><span>Years of experience:</span> &nbsp;{doctorDetails.experience}</p>
+                            <p><span>Specialization:</span>&nbsp; {doctorDetails.speciality}</p>
+                            <p> <span>Type of Employement: </span>&nbsp;{doctorDetails.employment}</p>
+                        </div>
+                    </div>
+                </>
+            )}
+        </div>
+        
+    )
+}
+
+export default DoctorDetails
