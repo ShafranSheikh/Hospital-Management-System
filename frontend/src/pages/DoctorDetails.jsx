@@ -5,14 +5,14 @@ import '../styles/doctordetails.css'
 const DoctorDetails = () => {
     const {id} = useParams(); //Extract doctor id from url
     const navigate = useNavigate();
-    const [doctorDetails, setDocterDetails] = useState(null);
+    const [doctorDetails, setDoctrrDetails] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [formData, setFormData]  = useState({});
     useEffect(()=>{
         const fetchDoctorDetails  = async ()=>{
             try{
                 const response  = await axios.get(`http://localhost:3000/api/doctors/details/${id}`);
-                setDocterDetails(response.data);
+                setDoctrrDetails(response.data);
                 setFormData(response.data); //pre-fill form with existing details
             }catch(error){
                 console.error('Error fetching doctor details:', error);
@@ -20,7 +20,6 @@ const DoctorDetails = () => {
         };
         fetchDoctorDetails();
     },[id]);
-
     //handle form filed changes
     const handleInputChange = (e) =>{
         const {name, value} = e.target;
@@ -39,8 +38,8 @@ const DoctorDetails = () => {
                 headers:{'Content-Type': 'multipart/form-data'},
             });
             alert('Doctor details updated successfully');
-            setDocotrDetails(response.data.doctor); // Update displayed details
-            setEditMOde(false); // exit edit mode
+            setDoctrrDetails(response.data.doctor); // Update displayed details
+            setEditMode(false); // exit edit mode
         }catch(error){
             console.error('Error updating doctor', error);
             alert('Failed to update doctor details');
@@ -61,106 +60,115 @@ const DoctorDetails = () => {
         return <p>Loading doctor details.....</p>;
     }
     return (
+        <>
+        <div className="doctor-header">
+            <button onClick={()=> navigate('/doctor/overview')}>Back to Doctor Overview</button>
+        </div>
         <div className='doctor-details-container'>
             {editMode ? (
-                <form className="doctor-update-form" onSubmit={updateDoctor}>
-                <h1>Update Doctor Details</h1>
-                <input
-                    type="text"
-                    name="fname"
-                    value={formData.fname}
-                    onChange={handleInputChange}
-                    placeholder="First Name"
-                    required
-                />
-                <input
-                    type="text"
-                    name="lname"
-                    value={formData.lname}
-                    onChange={handleInputChange}
-                    placeholder="Last Name"
-                    required
-                />
-                <input
-                    type="number"
-                    name="age"
-                    value={formData.age}
-                    onChange={handleInputChange}
-                    placeholder="Age"
-                    required
-                />
-                <input
-                    type="text"
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleInputChange}
-                    placeholder="Gender"
-                    required
-                />
-                <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    placeholder="Address"
-                    required
-                />
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Email"
-                    required
-                />
-                <input
-                    type="text"
-                    name="pnumber"
-                    value={formData.pnumber}
-                    onChange={handleInputChange}
-                    placeholder="Phone Number"
-                    required
-                />
-                <input
-                    type="text"
-                    name="rnumber"
-                    value={formData.rnumber}
-                    onChange={handleInputChange}
-                    placeholder="Registration Number"
-                    required
-                />
-                <input
-                    type="number"
-                    name="experience"
-                    value={formData.experience}
-                    onChange={handleInputChange}
-                    placeholder="Years of Experience"
-                    required
-                />
-                <input
-                    type="text"
-                    name="speciality"
-                    value={formData.speciality}
-                    onChange={handleInputChange}
-                    placeholder="Speciality"
-                    required
-                />
-                <input
-                    type="text"
-                    name="employment"
-                    value={formData.employment}
-                    onChange={handleInputChange}
-                    placeholder="Type of Employment"
-                    required
-                />
-                <input
-                    type="file"
-                    name="image"
-                    onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
-                />
-                <button type="submit">Update Doctor</button>
-                <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
+                <div className="doctor-update-form" >
+                    <h1>Update Doctor Details</h1>
+                    <form onSubmit={updateDoctor}>
+                        <input
+                            type="text"
+                            name="fname"
+                            value={formData.fname}
+                            onChange={handleInputChange}
+                            placeholder="First Name"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="lname"
+                            value={formData.lname}
+                            onChange={handleInputChange}
+                            placeholder="Last Name"
+                            required
+                        />
+                        <input
+                            type="number"
+                            name="age"
+                            value={formData.age}
+                            onChange={handleInputChange}
+                            placeholder="Age"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="gender"
+                            value={formData.gender}
+                            onChange={handleInputChange}
+                            placeholder="Gender"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="address"
+                            value={formData.address}
+                            onChange={handleInputChange}
+                            placeholder="Address"
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            placeholder="Email"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="pnumber"
+                            value={formData.pnumber}
+                            onChange={handleInputChange}
+                            placeholder="Phone Number"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="rnumber"
+                            value={formData.rnumber}
+                            onChange={handleInputChange}
+                            placeholder="Registration Number"
+                            required
+                        />
+                        <input
+                            type="number"
+                            name="experience"
+                            value={formData.experience}
+                            onChange={handleInputChange}
+                            placeholder="Years of Experience"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="speciality"
+                            value={formData.speciality}
+                            onChange={handleInputChange}
+                            placeholder="Speciality"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="employment"
+                            value={formData.employment}
+                            onChange={handleInputChange}
+                            placeholder="Type of Employment"
+                            required
+                        />
+                        <input
+                            type="file"
+                            name="image"
+                            onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
+                        />
+                        <div className="update-button-container">
+                            <button type="submit">Update Doctor</button>
+                            <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
+                        </div>
+                        
                 </form>
+                </div>
             ) : (
                 <>
                     <div className="doctor-personal-details">
@@ -200,7 +208,7 @@ const DoctorDetails = () => {
                 </>
             )}
         </div>
-        
+        </>
     )
 }
 

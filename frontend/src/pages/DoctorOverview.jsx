@@ -7,6 +7,7 @@ import DoctorCountChart from '../components/Doctor-count-chart/DoctorCountChart'
 const DoctorOverview = () => {
     const [doctorDetails, setDoctordetails] = useState([]);
     const [doctorCount, setDoctorCount] = useState(0);
+    const [resignedCount, setResignedCount] = useState(0);
     //fetching doctor details from the backend
 useEffect(()=>{
     const fetchDoctorDetails = async () =>{
@@ -27,6 +28,15 @@ useEffect(()=>{
         }
     }
     fetchDoctorCount();
+    const fetchResignedCount = async () =>{
+        try{
+            const response = await axios.get('http://localhost:3000/api/doctors/resigned/count');
+            setResignedCount(response.data.count);
+        }catch(error){
+            console.error('Error fetching resigned doctor count:', error);
+        }
+    };
+    fetchResignedCount();
 },[]);
     const navigate = useNavigate();
   return (
@@ -41,7 +51,7 @@ useEffect(()=>{
                 <p>Total Number of Doctors</p>
             </div>
             <div className="doctor-card-container">
-                <h1>6</h1>
+                <h1>{resignedCount}</h1>
                 <p>Total Number of Resigned Doctors</p>
             </div>
             <div className="chart-container">

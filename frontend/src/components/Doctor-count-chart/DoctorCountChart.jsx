@@ -19,8 +19,16 @@ const DoctorCountChart = () => {
                 console.error('Error fetching doctor count:', error);
             }
         };
-
         fetchDoctorCount();
+        const fetchResignedCount = async () =>{
+                        try{
+                            const response = await axios.get('http://localhost:3000/api/doctors/resigned/count');
+                            setResignedCount(response.data.count);
+                        }catch(error){
+                            console.error('Error fetching resigned doctor count:', error);
+                        }
+                    };
+        fetchResignedCount();
     }, []);
 
     const data = {

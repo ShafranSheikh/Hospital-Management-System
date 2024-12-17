@@ -9,7 +9,7 @@ span{
 }
 
 .doctor-personal-details{
-    height: 43%;
+    height: 44%;
     padding: 20px;
     box-shadow: 2px 2px 20px #aaaaaa;
 }
@@ -42,7 +42,7 @@ span{
 
 }
 .doctor-image-container{
-    height: 340px;
+    height: 320px;
     object-fit: cover;
     padding: 10px;
     display: flex;
@@ -67,7 +67,14 @@ span{
     border-radius: 10px;
     box-shadow: 2px 2px 10px #aaaaaa;
 }
-
+.doctor-manager-container button:nth-of-type(1){
+    background-color: #002e4e;
+    color: #f8f9fa;
+}
+.doctor-manager-container button:nth-of-type(2){
+    background-color: #a4133c;
+    color: #f8f9fa;
+}
 .doctor-contact-information,
 .doctor-professional-details{
     height: 25%;
@@ -82,4 +89,62 @@ span{
     margin-top:10px;
     flex-direction: column;
     row-gap: 20px;
+}
+
+.doctor-update-form{
+    height: 96vh;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.doctor-update-form h1,
+.doctor-update-form input,
+.update-button-container button{
+    font-family: 'poppins';
+}
+.doctor-update-form h1{
+    color: #002137;
+}
+.doctor-update-form form{
+    height: 100%;
+    width: 80vh;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 20px #aaaaaa;
+    background-color: #dee2e6;
+}
+.doctor-update-form input{
+    height: 40px;
+    border-radius: 10px;
+    padding:5px ;
+    font-size: 20px;
+    background-color: #f2f2f2;
+}
+.doctor-update-form input:focus{
+    border: 1px solid #6995db;
+}
+.update-button-container{
+    height: 60px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap:20px ;
+}
+.update-button-container button{
+    border-radius: 10px;
+    font-size: 20px;
+}
+.update-button-container button:nth-of-type(1){
+    background-color: #4d82d6;
+    color: #dee2e6;
+}
+.update-button-container button:nth-of-type(2){
+    background-color: #cd5d67;
+    color: #dee2e6;
 }

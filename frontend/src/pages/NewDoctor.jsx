@@ -70,29 +70,29 @@ const NewDoctor = () => {
         <h1>Doctor  Reggistration</h1>
           <h2>Personal Information</h2>
           <div className="top-doctorinput-container">
-          <div className="image-upload-container">
-              <input
-                type="file"
-                id="doctor-image-upload"
-                accept="image/png, image/jpeg"
-                hidden
-                onChange={handleFileChange}
-                name='image'
-                required
-              />
-              <label htmlFor="doctor-image-upload" className="upload-box">
-              <div className="upload-icon">
-                  <img
-                    src={placeholder} // Replace with your upload icon URL
-                    alt="Upload Icon"
-                  />
+            <div className={`image-upload-container ${image ? 'image-added' : ''}`}>
+                <input
+                  type="file"
+                  id="doctor-image-upload"
+                  accept="image/png, image/jpeg"
+                  hidden
+                  onChange={handleFileChange}
+                  name='image'
+                  required
+                />
+                <label htmlFor="doctor-image-upload" className="upload-box">
+                <div className="upload-icon">
+                    <img
+                      src={placeholder} // Replace with your upload icon URL
+                      alt="Upload Icon"
+                    />
+                </div>
+                <p className="upload-text">
+                  Drop your image here, or <span className="browse-link">browse</span>
+                </p>
+                <p className="supported-formats">Supports: JPG, JPEG2000, PNG</p>
+                </label>
               </div>
-              <p className="upload-text">
-                Drop your image here, or <span className="browse-link">browse</span>
-              </p>
-              <p className="supported-formats">Supports: JPG, JPEG2000, PNG</p>
-              </label>
-            </div>
             <div className="doctor-personal">
               <div className="personalinput-container">
                 <label>First name:</label>
@@ -109,8 +109,8 @@ const NewDoctor = () => {
               <div className="personalradio-container">
                 <label>Gender</label>
                 <div className="radio-input">
-                  <label htmlFor="">Male: <input type="radio" id='male' name='gender'value='male' checked={gender === 'male'} onChange={handleGenderChange}/></label>
-                  <label htmlFor="">Female: <input type="radio" id='female' name='gender'value='female' checked={gender === 'female'} onChange={handleGenderChange}/></label>
+                  <label htmlFor="">Male: &nbsp;<input type="radio" id='male' name='gender'value='male' checked={gender === 'male'} onChange={handleGenderChange}/></label>
+                  <label htmlFor="">Female: &nbsp;<input type="radio" id='female' name='gender'value='female' checked={gender === 'female'} onChange={handleGenderChange}/></label>
                 </div>
               </div>
             </div>
@@ -149,8 +149,8 @@ const NewDoctor = () => {
             <div className="doctor-input">
               <label htmlFor="">Type of Employement:</label>
               <div className="radio-input">
-                <label htmlFor="">Part-Time : <input type="radio" name="employment" id="part-time" value='part-time'checked={employment === 'part-time'} onChange={handleEmploymentChange}/></label>
-                <label htmlFor="">Full-Time : <input type="radio" name="employment" id="full-time" value='full-time'checked={employment === 'full-time'} onChange={handleEmploymentChange}/></label>
+                <label htmlFor="">Part-Time :&nbsp; <input type="radio" name="employment" id="part-time" value='part-time'checked={employment === 'part-time'} onChange={handleEmploymentChange}/></label>
+                <label htmlFor="">Full-Time :&nbsp; <input type="radio" name="employment" id="full-time" value='full-time'checked={employment === 'full-time'} onChange={handleEmploymentChange}/></label>
               </div>
             </div>
           </div>

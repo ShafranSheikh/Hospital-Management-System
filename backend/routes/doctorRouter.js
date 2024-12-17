@@ -1,6 +1,7 @@
 import express from "express";
 import DoctorSchema from "../models/DoctorSchema.js";
 import multer from "multer";
+import ResignedDoctorCountSchema from "../models/ResignedDoctorCountSchema .js";
 const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -97,7 +98,13 @@ router.delete('/details/:id', async (req,res)=>{
         if(!deleteDocotr){
             return res.status(404).json({error: 'Docotor Not Found'});
         }
-        res.status(200).json({message: 'Doctor deleted Successfully'});
+        //Logic for increment the resigned doctor count
+        const resignedCount = await ResignedDoctorCountSchema.findOneAndUpdate(
+            {}, //Match all since it's a single document
+            {$inc: {count : 1}},// increment the count by 1
+            {upsert: true, new:true}// create the document if it doesn't exist
+        );
+        res.status(200).json({message: 'Doctor deleted Successfully', resignedCount});
     }catch(error){
         console.log('Error deleting doctor', error);
         res.status(500).json({error: 'Failed to delete doctor'});
@@ -126,8 +133,6 @@ router.put('/details/:id', upload.single('image'), async (req,res)=>{
         res.status(500).json({error: 'Failed to update doctor'})
     }
 });
-
-
 router.get('/count', async (req,res)=>{
     try{
         const count = await DoctorSchema.countDocuments();
@@ -135,5 +140,15 @@ router.get('/count', async (req,res)=>{
     }catch(error){
         res.status(500).json({message: "Failed to fetch doctor count", error});
     }
-})
+});
+router.get('/resigned/count', async (req,res)=>{
+    try{
+        const resignedCount = await ResignedDoctorCountSchema.findOne({});
+        const count = resignedCount ? resignedCount.count : 0
+        res.status(200).json({count});
+    }catch(error){
+        console.error('Error fetching resigned doctor count: ', error);
+        res.status(500).json({error: 'Failed to fetch resigned doctor count'});
+    }
+});
 export default router

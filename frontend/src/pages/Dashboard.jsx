@@ -8,6 +8,7 @@ import '../styles/dashboard.css';
 const Dashboard = () => {
     const [showPopover, setShowPopover] = useState(false);
     const [doctorCount, setDoctorCount] = useState(0);
+    const [resignedCount, setResignedCount] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(()=>{
@@ -20,6 +21,15 @@ const Dashboard = () => {
             }
         }
         fetchDoctorCount();
+        const fetchResignedCount = async () =>{
+                try{
+                    const response = await axios.get('http://localhost:3000/api/doctors/resigned/count');
+                    setResignedCount(response.data.count);
+                }catch(error){
+                    console.error('Error fetching resigned doctor count:', error);
+                }
+            };
+        fetchResignedCount();
     },[]);
     const handleLogout = async () => {
         try {
@@ -77,7 +87,7 @@ const Dashboard = () => {
                     <h3>Total Number of Doctors</h3>
                 </div>
                 <div className="stat-card">
-                    <h1>01</h1>
+                    <h1>{resignedCount}</h1>
                     <h3>Resigned Doctors</h3>
                 </div>
                 <div className="stat-card">

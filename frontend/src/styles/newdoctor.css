@@ -7,6 +7,7 @@
 }
 form label{
     font-family: 'Poppins';
+    font-size: 18px;
 }
 h1{
     text-align: center;
@@ -49,6 +50,9 @@ h2{
 }
 .top-doctorinput-container .doctor-personal .personalinput-container input{
     width: 70%;
+    height: 3rem;
+    padding: 10px;
+    font-size: 18px;
     box-shadow: 2px 2px 10px #D3D3D3;
     border-radius: 6px;
     font-family: 'Poppins';
@@ -68,8 +72,13 @@ h2{
     padding: 20px;
     position: relative;
     box-shadow: 2px 2px 20px #D3D3D3;
+    transition: all 0.3s ease;
 }
-
+.image-upload-container.image-added {
+    box-shadow: 2px 2px 20px #1a7431;
+    background-color: #f2f2f2;
+    border: 2px solid #555;
+}
 .upload-box {
     cursor: pointer;
     display: flex;
@@ -128,7 +137,9 @@ h2{
 .middle-doctorinput-container .doctor-textarea-container textarea{
     width:98% ;
     height: 100%;
+    padding: 10px;
     resize: none;
+    font-size: 18px;
     max-lines: 4;
     box-shadow: 2px 2px 10px #D3D3D3;
     font-family: 'Poppins';
@@ -144,12 +155,15 @@ h2{
     display: grid;
     grid-template-columns: 4rem auto;
     align-items: center;
+    gap: 10px;
     padding: 10px;
 }
 .middle-doctorinput-container .doctor-contactinput-container .doctor-emailinput input,
 .middle-doctorinput-container .doctor-contactinput-container .doctor-numberinput input{
     height: 3rem;
     width: 96%;
+    font-size: 18px;
+    padding: 10px;
     box-shadow: 2px 2px 10px #D3D3D3;
     font-family: 'Poppins';
 }
@@ -169,6 +183,8 @@ h2{
 }
 .bottom-doctorinput-container .doctor-input input{
     box-shadow: 2px 2px 10px #D3D3D3;
+    padding: 10px;
+    font-size: 18px;
     font-family: 'Poppins';
 }
 .bottom-doctorinput-container  .radio-input{
