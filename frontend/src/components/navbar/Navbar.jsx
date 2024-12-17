@@ -22,26 +22,26 @@ const Navbar = () => {
     <div className="navbar-container-main">
         <div className="navbar-container-contents">
             <div className="navbar-contacts">
-                <h2><img src={phone} alt="" /> +9470 1095371</h2>
-                <h2><img src={mail} alt="" /> shafransheikh@gmail.com</h2>
+                <h2><img src={phone} alt="" loading='lazy'/> +9470 1095371</h2>
+                <h2><img src={mail} alt="" loading='lazy' /> shafransheikh@gmail.com</h2>
             </div>
             <img src={logo} alt="logo" />
-            <div className="navbar-social-licks">
+            <div className="navbar-social-licks" >
                 <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                    <img src={facebook} alt="Facebook" />
+                    <img src={facebook} alt="Facebook" loading='lazy' />
                 </a>
                 <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
-                    <img src={github} alt="" />
+                    <img src={github} alt="" loading='lazy'/>
                 </a>
                 <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-                    <img src={linkedin} alt="" />
+                    <img src={linkedin} alt="" loading='lazy'/>
                 </a>
             </div>
         </div>
         <div className="navbar-container-links">
             <ul>
                 <li>
-                    <Link to='/'>Home</Link>
+                    <Link to='/' >Home</Link>
                 </li>
                 <li>
                     <Link to='/about'>About us</Link>

@@ -8,7 +8,9 @@ import '../styles/dashboard.css';
 const Dashboard = () => {
     const [showPopover, setShowPopover] = useState(false);
     const [doctorCount, setDoctorCount] = useState(0);
+    const [patientCount, setPatientCount] = useState(0);
     const [resignedCount, setResignedCount] = useState(0);
+    const [dischargedCount, setDischargedCount] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(()=>{
@@ -21,6 +23,15 @@ const Dashboard = () => {
             }
         }
         fetchDoctorCount();
+        const fetchPatientCount = async()=>{
+            try{
+                const response = await axios.get('http://localhost:3000/api/patient/count');
+                setPatientCount(response.data.count);
+            }catch(error){
+                console.error("Error fetching Patient count:", error);
+            }
+        }
+        fetchPatientCount();
         const fetchResignedCount = async () =>{
                 try{
                     const response = await axios.get('http://localhost:3000/api/doctors/resigned/count');
@@ -30,6 +41,15 @@ const Dashboard = () => {
                 }
             };
         fetchResignedCount();
+        const fetchDischargedCount = async ()=>{
+            try{
+                const response = await axios.get('http://localhost:3000/api/patient/discharged/count');
+                setDischargedCount(response.data.count);
+            }catch(error){
+                console.error('Error fetching Discharged patient count:', error);
+            }
+        }
+        fetchDischargedCount();
     },[]);
     const handleLogout = async () => {
         try {
@@ -79,7 +99,7 @@ const Dashboard = () => {
             </div>
             <div className="dashboard-statistics">
                 <div className="stat-card">
-                    <h1>01</h1>
+                    <h1>{patientCount}</h1>
                     <h3>Total Number of Patients</h3>
                 </div>
                 <div className="stat-card">
@@ -91,7 +111,7 @@ const Dashboard = () => {
                     <h3>Resigned Doctors</h3>
                 </div>
                 <div className="stat-card">
-                    <h1>01</h1>
+                    <h1>{dischargedCount}</h1>
                     <h3>Discharged Patients</h3>
                 </div>
             </div>

@@ -61,7 +61,7 @@ useEffect(()=>{
         <div className="doctor-overview-container">
             {doctorDetails.length > 0 ?(doctorDetails.map((doctor)=>(
                 <div className="doctor-overview-card" key={doctor.id}>
-                    <img src={doctor.data} alt="" />
+                    <img src={doctor.data} alt="" loading='lazy' />
                     <h2>Dr.&nbsp;{doctor.fname}&nbsp;{doctor.lname}</h2>
                     <p>{doctor.speciality}</p>
                     <p>Doctor ID:&nbsp; <span>{doctor.rnumber}</span></p>

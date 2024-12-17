@@ -7,6 +7,7 @@ const Newpatient = () => {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
+        age:"",
         gender: "",
         address: "",
         email: "",
@@ -23,7 +24,8 @@ const Newpatient = () => {
         e.preventDefault();
         try{
             const response = await axios.post('http://localhost:3000/api/patient/register/new', formData);
-            
+            alert('Patient added successfully');
+            window.location.reload();
         }catch(error){
             console.error('Error during submission',error);
         }
@@ -53,6 +55,17 @@ const Newpatient = () => {
                 id="lastName"
                 name="lastName"
                 value={formData.lastName}
+                onChange={handleChange}
+                required
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="age">Age:</label>
+                <input
+                type="number"
+                id="age"
+                name="age"
+                value={formData.age}
                 onChange={handleChange}
                 required
                 />

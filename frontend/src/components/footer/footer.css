@@ -1,33 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures consistent sizing */
     text-decoration: none;
-    border:none;
+    border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Playfair',sans-serif;
+    font-family: 'Playfair', sans-serif;
 }
-footer{
-    height:7rem;
-    margin:  10px 5px;
+
+footer {
+    height: 7rem; /* Fixed height for stability */
     border-radius: 10px;
     border: 2px solid #091057;
     display: flex;
     align-items: center;
-    padding: 20px;
     justify-content: space-between;
+    padding: 20px;
+    margin: 10px 5px;
+    box-sizing: border-box; /* Includes padding and border in total dimensions */
 }
-.footer-social-links{
+
+.footer-social-links {
     height: 4rem;
     width: 15rem;
     display: flex;
     flex-direction: row;
     gap: 18px;
     align-items: center;
+    justify-content: center;
     padding: 10px;
+    box-sizing: border-box;
 }
-.footer-social-links img{
+
+.footer-social-links img {
     height: 2rem;
+    width: 2rem; /* Fixed dimensions to prevent shifting */
 }

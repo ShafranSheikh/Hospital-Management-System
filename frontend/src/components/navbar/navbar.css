@@ -33,6 +33,7 @@
 }
 .navbar-container-contents .navbar-contacts h2 img{
     height: 1.2rem;
+    width: auto;
 }
 .navbar-container-contents .navbar-contacts h2{
     color: #608BC1;
@@ -40,6 +41,7 @@
 }
 .navbar-container-contents img{
     height: 3rem;
+    width: auto;
 }
 .navbar-container-contents .navbar-social-licks{
     height: 4rem;
@@ -52,6 +54,7 @@
 }
 .navbar-container-contents .navbar-social-licks img{
     height: 2rem;
+    width: auto;
 }
 .navbar-container-links{
     height: 4rem;
@@ -81,7 +84,7 @@
     color: white; /* Text color */
     padding: 8px 15px; /* Add spacing around links */
     border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
 }
 
 .navbar-container-links a:hover {

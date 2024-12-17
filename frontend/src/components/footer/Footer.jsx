@@ -7,15 +7,15 @@ const Footer = () => {
   return (
     <footer>
         <h2>Copyright &copy; 2024 Shafran. All rights</h2>
-        <div className="footer-social-links">
+        <div className="footer-social-links" >
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-              <img src={facebook} alt="Facebook" />
+              <img src={facebook} alt="Facebook" loading='lazy'/>
             </a>
             <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
-              <img src={github} alt="" />
+              <img src={github} alt="" loading='lazy'/>
             </a>
             <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-              <img src={linkedin} alt="" />
+              <img src={linkedin} alt="" loading='lazy'/>
             </a>
         </div>
     </footer>

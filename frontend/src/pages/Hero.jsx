@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="hero-section">
         <h1>Welcome To MediCore</h1>
-        <img src={hero} alt="" />
+        <img src={hero} alt="" loading='lazy' />
         <div className="hero-button-container">
             <button onClick={()=>navigate('/signin')}>Signup</button>
             <button onClick={()=>navigate('/login')}>Login</button>

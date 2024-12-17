@@ -1,6 +1,12 @@
 import React,{useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import DeleteIcon from '@mui/icons-material/Delete';
+import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
+import CancelIcon from '@mui/icons-material/Cancel';
+import PersonIcon from '@mui/icons-material/Person';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import MedicationIcon from '@mui/icons-material/Medication';
 import '../styles/doctordetails.css'
 const DoctorDetails = () => {
     const {id} = useParams(); //Extract doctor id from url
@@ -163,8 +169,8 @@ const DoctorDetails = () => {
                             onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
                         />
                         <div className="update-button-container">
-                            <button type="submit">Update Doctor</button>
-                            <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
+                            <button type="submit">Update Doctor <BrowserUpdatedIcon/></button>
+                            <button type="button" onClick={() => setEditMode(false)}>Cancel <CancelIcon/></button>
                         </div>
                         
                 </form>
@@ -172,10 +178,10 @@ const DoctorDetails = () => {
             ) : (
                 <>
                     <div className="doctor-personal-details">
-                        <h1>Doctor Personal Details</h1>
+                        <h1>Doctor Personal Details <PersonIcon fontSize='large'/></h1>
                         <div className="doctor-personal-content-container">
                             <div className="doctor-image-container">
-                                <img src={doctorDetails.data} alt="Doctor" />
+                                <img src={doctorDetails.data} alt="Doctor" loading='lazy'/>
                             </div>
                             <div className="personal-content">
                                 <p><span>Full Name:</span>&nbsp; {doctorDetails.fname} {doctorDetails.lname}</p>
@@ -184,13 +190,13 @@ const DoctorDetails = () => {
                                 <p><span>ID: </span>&nbsp;{doctorDetails.rnumber}</p>
                             </div>
                             <div className="doctor-manager-container">
-                                <button onClick={() => setEditMode(true)}>Update Doctor Details</button>
-                                <button onClick={deleteDoctor}>Remove Doctor</button>
+                                <button onClick={() => setEditMode(true)}>Update Doctor Details <BrowserUpdatedIcon/> </button>
+                                <button onClick={deleteDoctor}>Remove Doctor <DeleteIcon/> </button>
                             </div>
                         </div>
                     </div>
                     <div className="doctor-contact-information">
-                        <h1>Doctor Contact details</h1>
+                        <h1>Doctor Contact details <ContactsIcon /></h1>
                         <div className="doctor-contact-content-container">
                             <p><span>Address:</span>&nbsp; {doctorDetails.address}</p>
                             <p><span>Email:</span>&nbsp;{doctorDetails.email}</p>
@@ -198,7 +204,7 @@ const DoctorDetails = () => {
                         </div>
                     </div>
                     <div className="doctor-professional-details">
-                        <h1>Doctor Professional Details</h1>
+                        <h1>Doctor Professional Details <MedicationIcon/></h1>
                         <div className="doctor-prefessional-content-container">
                             <p><span>Years of experience:</span> &nbsp;{doctorDetails.experience}</p>
                             <p><span>Specialization:</span>&nbsp; {doctorDetails.speciality}</p>
