@@ -8,6 +8,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import MedicationIcon from '@mui/icons-material/Medication';
 import '../styles/doctordetails.css'
+import Loader from '../components/loader/loader';
 const DoctorDetails = () => {
     const {id} = useParams(); //Extract doctor id from url
     const navigate = useNavigate();
@@ -63,7 +64,7 @@ const DoctorDetails = () => {
     };
 
     if(!doctorDetails){
-        return <p>Loading doctor details.....</p>;
+        return <Loader/>;
     }
     return (
         <>
@@ -191,12 +192,12 @@ const DoctorDetails = () => {
                             </div>
                             <div className="doctor-manager-container">
                                 <button onClick={() => setEditMode(true)}>Update Doctor Details <BrowserUpdatedIcon/> </button>
-                                <button onClick={deleteDoctor}>Remove Doctor <DeleteIcon/> </button>
+                                <button onClick={deleteDoctor}>Remove Doctor <DeleteIcon fontSize='medium'/> </button>
                             </div>
                         </div>
                     </div>
                     <div className="doctor-contact-information">
-                        <h1>Doctor Contact details <ContactsIcon /></h1>
+                        <h1>Doctor Contact details <ContactsIcon fontSize='large' /></h1>
                         <div className="doctor-contact-content-container">
                             <p><span>Address:</span>&nbsp; {doctorDetails.address}</p>
                             <p><span>Email:</span>&nbsp;{doctorDetails.email}</p>
@@ -204,7 +205,7 @@ const DoctorDetails = () => {
                         </div>
                     </div>
                     <div className="doctor-professional-details">
-                        <h1>Doctor Professional Details <MedicationIcon/></h1>
+                        <h1>Doctor Professional Details <MedicationIcon fontSize='large'/></h1>
                         <div className="doctor-prefessional-content-container">
                             <p><span>Years of experience:</span> &nbsp;{doctorDetails.experience}</p>
                             <p><span>Specialization:</span>&nbsp; {doctorDetails.speciality}</p>

@@ -52,13 +52,19 @@
     font-weight: bold;
     border-radius: 10px;
     border: 1px solid #091057;
-    
+    transition: 0.4s ease-out;
+}
+.dashboard-functions button:hover{
+    background-color: #091057;
+    color: #B3C8CF;
 }
 .dashboard-statistics{
-    height: 15rem;
+    min-height: 15rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    gap :20px;
 }
 .dashboard-statistics .stat-card{
     height: 12rem;
@@ -93,6 +99,35 @@
 .dashboard-statistics .stat-card:nth-child(3):hover{
     box-shadow: 3px 3px 20px #f7786f;
 }
+.graph-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px; /* Space between the grid items */
+    padding: 20px; /* Space inside the container */
+    background-color: #f9f9f9; /* Optional: light background */
+    border-radius: 10px; /* Rounded edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: shadow effect */
+    margin: 30px 10px;
+}
+.graph-container-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible grid layout */
+    gap: 15px; /* Space between graphs */
+    padding: 20px; /* Padding around the container */
+    background-color: #f9f9f9; /* Optional: Light background color */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+}
+
+.graph-container-2 > div {
+    height: 200px; /* Reduce height of graphs */
+    max-width: 300px; /* Limit the maximum width of each graph */
+    margin: auto; /* Center align the graphs within their grid cells */
+    overflow: hidden; /* Prevent graphs from overflowing their container */
+}
+
+
+
 /* Logout popover styles */
 .logout-popover {
     position: fixed;
@@ -139,4 +174,42 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
+}
+
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .dashboard-statistics {
+        justify-content: center; /* Center the cards on smaller screens */
+        gap: 20px;
+    }
+
+    .stat-card {
+        width: 80%; /* Cards take up 80% width on smaller screens */
+    }
+
+    .dashboard-header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header h1 {
+        font-size: 1.5rem;
+    }
+    .graph-container{
+        margin-top: 40px;
+    }
+    .stat-card {
+        width: 90%; /* Cards take up 90% width on very small screens */
+    }
+
+    .dashboard-functions {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 10px;
+    }
+
+    .dashboard-functions button {
+        font-size: 1rem;
+    }
 }

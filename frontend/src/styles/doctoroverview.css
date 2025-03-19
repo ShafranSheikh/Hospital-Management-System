@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .doctor-stats{
-    height: 10rem;
+    min-height: 10rem;
     background-color: aliceblue;
     margin: 20px 10px;
     display: grid;
+    flex-wrap: wrap;
     grid-template-columns: 20rem 20rem 20rem;
     justify-content: left;
     align-items: center;
     gap: 40px;
 }
 .doctor-stats .doctor-card-container{
-    height: 9rem;
+    min-height: 9rem;
     border-radius: 10px;
     display: grid;
     grid-template-rows:auto;

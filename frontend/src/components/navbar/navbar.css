@@ -1,22 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spicy+Rice&display=swap');
-*{
-    margin:0;
-    padding:0;
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    border:none;
+    border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: 'Playfair',sans-serif;
+    font-family: 'Playfair', sans-serif;
 }
-.navbar-container-main{
+
+.navbar-container-main {
     height: 9rem;
     width: 100%;
     background-color: #DFF2EB;
     display: flex;
     flex-direction: column;
 }
-.navbar-container-contents{
+
+.navbar-container-contents {
     height: 5rem;
     width: 100%;
     display: flex;
@@ -24,26 +27,31 @@
     align-items: center;
     justify-content: space-between;
 }
-.navbar-container-contents .navbar-contacts{
+
+.navbar-container-contents .navbar-contacts {
     width: 35rem;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 0;
 }
-.navbar-container-contents .navbar-contacts h2 img{
+
+.navbar-container-contents .navbar-contacts h2 img {
     height: 1.2rem;
     width: auto;
 }
-.navbar-container-contents .navbar-contacts h2{
+
+.navbar-container-contents .navbar-contacts h2 {
     color: #608BC1;
     font-size: 25px;
 }
-.navbar-container-contents img{
+
+.navbar-container-contents img {
     height: 3rem;
     width: auto;
 }
-.navbar-container-contents .navbar-social-licks{
+
+.navbar-container-contents .navbar-social-licks {
     height: 4rem;
     width: 15rem;
     display: flex;
@@ -52,11 +60,13 @@
     align-items: center;
     padding: 10px;
 }
-.navbar-container-contents .navbar-social-licks img{
+
+.navbar-container-contents .navbar-social-licks img {
     height: 2rem;
     width: auto;
 }
-.navbar-container-links{
+
+.navbar-container-links {
     height: 4rem;
     width: 100%;
     padding: 10px 20px;
@@ -67,30 +77,98 @@
 }
 
 .navbar-container-links ul {
-    list-style-type: none; 
+    list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex; 
-    gap: 20px; 
+    display: flex;
+    gap: 20px;
 }
 
 .navbar-container-links li {
-    font-size: 25px; /* Adjust font size */
-    font-weight: bold; /* Make text bold */
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .navbar-container-links a {
-    text-decoration: none; /* Remove underline */
-    color: white; /* Text color */
-    padding: 8px 15px; /* Add spacing around links */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-container-links a:hover {
-    color: #0B192C; /* Keep text white */
+    color: #0B192C;
 }
 
 .navbar-container-links a:active {
-    background-color: #091057; /* Even darker for active state */
+    background-color: #091057;
+}
+
+/* Media Query for tablets and small devices (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar-container-main {
+        height: auto; /* Allow the height to adjust */
+    }
+
+    .navbar-container-contents {
+        flex-direction: column; /* Stack contents vertically */
+        align-items: center; /* Center-align elements */
+        gap: 10px; /* Add spacing between stacked items */
+    }
+
+    .navbar-container-contents .navbar-contacts {
+        width: auto; /* Adjust to content width */
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center; /* Center-align items */
+        gap: 10px; /* Reduce spacing between contacts */
+    }
+
+    .navbar-container-contents .navbar-social-licks {
+        width: auto; /* Adjust width */
+        justify-content: center; /* Center-align */
+        gap: 10px; /* Smaller gap */
+    }
+
+    .navbar-container-links {
+        padding: 5px 10px; /* Reduce padding */
+    }
+
+    .navbar-container-links ul {
+        flex-wrap: wrap; /* Allow items to wrap on small screens */
+        justify-content: center; /* Center-align links */
+        gap: 10px; /* Smaller gap */
+    }
+
+    .navbar-container-links li {
+        font-size: 20px; /* Reduce font size */
+    }
+
+    .navbar-container-links a {
+        padding: 5px 10px; /* Reduce padding for links */
+    }
+}
+
+/* Media Query for small phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .navbar-container-contents {
+        gap: 8px; /* Further reduce spacing */
+    }
+
+    .navbar-container-contents img {
+        height: 2.5rem; /* Smaller logo size */
+    }
+
+    .navbar-container-links ul {
+        flex-direction: column; /* Stack links vertically */
+        gap: 8px; /* Reduce gap */
+    }
+
+    .navbar-container-links li {
+        font-size: 18px; /* Further reduce font size */
+    }
+
+    .navbar-container-links a {
+        padding: 4px 8px; /* Smaller padding for tight spaces */
+    }
 }

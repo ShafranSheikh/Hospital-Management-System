@@ -4,6 +4,7 @@ import '../styles/doctoroverview.css';
 import axios from 'axios';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import DoctorCountChart from '../components/Doctor-count-chart/DoctorCountChart';
+import Loader from '../components/loader/loader';
 const DoctorOverview = () => {
     const [doctorDetails, setDoctordetails] = useState([]);
     const [doctorCount, setDoctorCount] = useState(0);
@@ -55,7 +56,7 @@ useEffect(()=>{
                 <p>Total Number of Resigned Doctors</p>
             </div>
             <div className="chart-container">
-            <DoctorCountChart/>
+                <DoctorCountChart/>
             </div>
         </div>
         <div className="doctor-overview-container">
@@ -68,7 +69,7 @@ useEffect(()=>{
                     <button onClick={()=>navigate(`/doctor/details/${doctor.id}`)}><OpenInNewIcon/></button>
                 </div>
             ))):(
-                <p>No Doctor details available</p>
+                <Loader />
             )}
             
         </div>

@@ -39,3 +39,40 @@ footer {
     height: 2rem;
     width: 2rem; /* Fixed dimensions to prevent shifting */
 }
+
+/* Media Query for smaller screens (e.g., tablets and phones) */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column; /* Stack elements vertically */
+        height: auto; /* Allow the height to adjust */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .footer-social-links {
+        width: auto; /* Allow the width to adjust to content */
+        gap: 10px; /* Reduce gap between social icons */
+    }
+
+    .footer-social-links img {
+        height: 1.5rem; /* Adjust size for smaller screens */
+        width: 1.5rem;
+    }
+}
+
+/* Media Query for very small screens (e.g., phones) */
+@media (max-width: 480px) {
+    footer {
+        padding: 5px; /* Further reduce padding */
+        margin: 5px; /* Reduce margins */
+    }
+
+    .footer-social-links {
+        flex-wrap: wrap; /* Allow icons to wrap if needed */
+        gap: 8px; /* Smaller gap for tight spaces */
+    }
+
+    .footer-social-links img {
+        height: 1.2rem; /* Even smaller size */
+        width: 1.2rem;
+    }
+}

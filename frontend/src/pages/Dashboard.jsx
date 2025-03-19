@@ -4,6 +4,8 @@ import { logout } from '../redux/features/authSlice.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/dashboard.css';
+import PatientCountChart from '../components/Doctor-count-chart/PatientCountChart.jsx';
+import DoctorCountBarGraph from '../components/Doctor-count-chart/DoctorCountBarGraph.jsx';
 
 const Dashboard = () => {
     const [showPopover, setShowPopover] = useState(false);
@@ -11,6 +13,7 @@ const Dashboard = () => {
     const [patientCount, setPatientCount] = useState(0);
     const [resignedCount, setResignedCount] = useState(0);
     const [dischargedCount, setDischargedCount] = useState(0);
+    const [selectedMonth, setSelectedMonth] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(()=>{
@@ -89,13 +92,8 @@ const Dashboard = () => {
                 <button onClick={handleLogoutClick}>Logout</button>
             </div>
             <div className="dashboard-functions">
-                <div className="month-selector">
-                    <p>Date Range</p>
-                    <form>
-                        <input type="month" />
-                    </form>
-                </div>
                 <button onClick={() => navigate('/tables')}>View Tables</button>
+                <button>Generate Report</button>
             </div>
             <div className="dashboard-statistics">
                 <div className="stat-card">
@@ -114,6 +112,10 @@ const Dashboard = () => {
                     <h1>{dischargedCount}</h1>
                     <h3>Discharged Patients</h3>
                 </div>
+            </div>
+            <div className="graph-container">
+                <PatientCountChart/>
+                <DoctorCountBarGraph/>
             </div>
             {showPopover && (
                 <>

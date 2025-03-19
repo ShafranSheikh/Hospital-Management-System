@@ -11,10 +11,10 @@ const Footer = () => {
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <img src={facebook} alt="Facebook" loading='lazy'/>
             </a>
-            <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/ShafranSheikh" target="_blank" rel="noopener noreferrer">
               <img src={github} alt="" loading='lazy'/>
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/mohamed-shafran-26847a257/" target="_blank" rel="noopener noreferrer">
               <img src={linkedin} alt="" loading='lazy'/>
             </a>
         </div>

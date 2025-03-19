@@ -1,9 +1,10 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/navbar/navbar';
+import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import ProtectedRoute from './components/ProtectedRoute'
 import DoctorDetails from './pages/DoctorDetails';
+import PublicRoute from './components/PublicRoute';
 
 // Lazy loading the components
 const Hero = lazy(() => import('./pages/Hero'));
@@ -69,8 +70,16 @@ function App() {
                 <DoctorDetails/>
               </ProtectedRoute>
             }/>
-            <Route path='/login' element={<Login />} />
-            <Route path='/signin' element={<Signin />} />
+            <Route path='/login' element={
+              <PublicRoute>
+                <Login/>
+              </PublicRoute>
+            } />
+            <Route path='/signin' element={
+              <PublicRoute>
+                <Signin />
+              </PublicRoute>
+            } />
           </Routes>
         </Suspense>
         <Footer />
